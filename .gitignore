@@ -1,5 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Node template
 # Logs
-logs
+/logs
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -80,6 +82,8 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
+
+# Nuxt generate
 dist
 
 # Gatsby files
@@ -87,6 +91,7 @@ dist
 # Comment in the public line in if your project uses Gatsby and *not* Next.js
 # https://nextjs.org/blog/next-9-1#public-directory-support
 # public
+
 
 # vuepress build output
 .vuepress/dist
@@ -102,3 +107,16 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+# IDE / Editor
+.idea
+
+# Service worker
+sw.*
+
+# macOS
+.DS_Store
+
+# Vim swap files
+*.swp
