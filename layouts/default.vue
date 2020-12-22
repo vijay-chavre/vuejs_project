@@ -7,6 +7,7 @@
       fixed
       app
       dark
+      color="blue"
     >
       <v-list>
         <v-list-item
@@ -31,41 +32,69 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <!-- <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
+      <v-spacer></v-spacer>
+       <v-menu
+        bottom
+        min-width="200px"
+        rounded
+        offset-y
       >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn> -->
+        <template v-slot:activator="{ on }">
+          <v-btn
+            icon
+            x-large
+            v-on="on"
+          >
+            <v-avatar
+            color="grey lighten-1"
+              size="48"
+            >
+              <span class="white--text ">{{ user.initials }}</span>
+            </v-avatar>
+          </v-btn>
+        </template>
+        <v-card>
+          <v-list-item-content class="justify-center">
+            <div class="mx-auto text-center">
+              <v-avatar
+                color="grey lighten-2"
+              >
+                <span class="white--text">{{ user.initials }}</span>
+              </v-avatar>
+              <h3>{{ user.fullName }}</h3>
+              <p class="caption mt-1">
+                {{ user.email }}
+              </p>
+              <v-divider class="my-3"></v-divider>
+              <v-btn
+                depressed
+                rounded
+                text
+              >
+                Edit Account
+              </v-btn>
+              <v-divider class="my-3"></v-divider>
+              <v-btn
+                depressed
+                rounded
+                text
+              >
+                Disconnect
+              </v-btn>
+            </div>
+          </v-list-item-content>
+        </v-card>
+      </v-menu>
     </v-app-bar>
+
+    <!-- Main Page -->
     <v-main>
       <v-container>
         <nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+
+    <!-- Footer -->
     <v-footer
       :absolute="!fixed"
       app
@@ -82,7 +111,11 @@ export default {
     return {
       clipped: false,
       drawer: false,
-      fixed: false,
+       user: {
+        initials: 'VC',
+        fullName: 'Vijay Chavre',
+        email: 'chavre.vijay@gmail.com',
+      },
       items: [
         {
           icon: 'mdi-apps',
