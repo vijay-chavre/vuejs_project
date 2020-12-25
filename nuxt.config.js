@@ -1,4 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
+import config from './envConfig'
+
+const hostConfig = config.getHostConfig()
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -43,7 +46,9 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseUrl: hostConfig.baseUrl
+  },
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
@@ -72,6 +77,7 @@ export default {
   },
 
   env: {
-   isLoggedIn: true
+    isLoggedIn: true,
+    NUXT_ENV_HOST_TYPE: 'dev',
   }
 }
