@@ -1,3 +1,3 @@
 {
-    "baseUrl": "http://localhost:3000/" // Temp base url need to updatd with actual url
+    "baseUrl": "http://localhost:3000/"   
 }
