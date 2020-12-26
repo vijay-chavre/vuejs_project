@@ -1,14 +1,19 @@
 <template>
-  <v-card min-width="70%">
+  <v-card min-width="65%">
+    <!-- <v-img
+      height="100"
+      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+    ></v-img> -->
     <v-toolbar
       flat
-      class="d-flex justify-center"
-      :color="brandColorPrimary"
-      dark
+      class="d-flex justify-center text--bold"
+      :color="white"
     >
       <v-spacer></v-spacer>
-      <v-toolbar-title class="font-weight-light"> LOGIN </v-toolbar-title>
+      <v-toolbar-title class="font-weight-semi-bold"> LOGIN </v-toolbar-title>
     </v-toolbar>
+    <v-divider></v-divider>
+    <v-container padding="10">
     <v-card-text>
       <v-text-field
         :disabled="!isEditing"
@@ -25,7 +30,7 @@
         filled
         type="password"
       ></v-text-field>
-    </v-card-text>
+   
     <v-card flat class="d-flex justify-space-between">
       <v-btn :color="brandColorPrimary"  text>
         <span>New User ?</span>
@@ -42,7 +47,6 @@
     </v-card>
 
     <v-card-actions>
-      <v-spacer></v-spacer>
       <v-btn
         :disabled="!isEditing"
         :color="brandColorPrimary"
@@ -50,11 +54,13 @@
         dark
         class="submit-button"
         x-large
+        width="100%"
       >
         Submit
       </v-btn>
-       <v-spacer></v-spacer>
     </v-card-actions>
+     </v-card-text>
+    </v-container>
     <v-spacer></v-spacer>
 
     
