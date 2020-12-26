@@ -7,7 +7,7 @@
     <v-toolbar
       flat
       class="d-flex justify-center text--bold"
-      :color="white"
+      color="white"
     >
       <v-spacer></v-spacer>
       <v-toolbar-title class="font-weight-semi-bold"> LOGIN </v-toolbar-title>
