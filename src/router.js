@@ -63,6 +63,24 @@ const routes = [
         ]
       },
       {
+        path: "data",
+        component: () =>
+          import(/* webpackChunkName: "setup" */ "./views/app/data"),
+        redirect: `${adminRoot}/data/data-prepare`,
+        children: [
+          {
+            path: "data-prepare",
+            component: () =>
+              import(/* webpackChunkName: "setup-intents" */ "./views/app/data/Prepare")
+          },
+          {
+            path: "data-analyse",
+            component: () =>
+              import(/* webpackChunkName: "setup-intents" */ "./views/app/data/Analyse")
+          }
+        ]
+      },
+      {
         path: "menu",
         component: () =>
           import(/* webpackChunkName: "menu" */ "./views/app/menu"),

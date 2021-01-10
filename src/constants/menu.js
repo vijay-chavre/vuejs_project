@@ -40,6 +40,23 @@ const data = [
       }
     ]
   },
+  {
+    id: "data",
+    icon: "iconsminds-data-center",
+    label: "menu.data",
+    to: `${adminRoot}/data`,
+    subs: [{
+      icon: "iconsminds-gaugage",
+      label: "menu.data-prepare",
+      to: `${adminRoot}/data/data-prepare`
+    },
+    {
+      icon: "iconsminds-monitor-analytics",
+      label: "menu.data-analyse",
+      to: `${adminRoot}/data/data-analyse`
+    }
+    ]
+  },
   //  {
   //   id: "menu",
   //   icon: "iconsminds-three-arrow-fork",
@@ -73,7 +90,6 @@ const data = [
   //   }
   //   ]
   // },
-  // {
-  
+
 ];
 export default data;
