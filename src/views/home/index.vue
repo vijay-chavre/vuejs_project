@@ -1,7 +1,7 @@
 <template>
   <home-layout>
     <div :class="{'landing-page': true,'show-mobile-menu': showMobileMenu}">
-      <div class="mobile-menu" @click="$event.stopPropagation()">
+      <!-- <div class="mobile-menu" @click="$event.stopPropagation()">
         <a @click="scrollTo('#home')" href="javascript:;" class="logo-mobile">
           <span></span>
         </a>
@@ -32,10 +32,10 @@
             >BUY</a>
           </li>
         </ul>
-      </div>
+      </div> -->
 
       <div class="main-container">
-        <div class="landing-page-nav">
+        <!-- <div class="landing-page-nav">
           <headroom style="height:initial;">
             <nav>
               <div class="container d-flex align-items-center justify-content-between">
@@ -76,7 +76,7 @@
               </div>
             </nav>
           </headroom>
-        </div>
+        </div> -->
 
         <div class="content-container" id="home">
           <div class="section home" id="sectionHome">
@@ -95,16 +95,11 @@
                 <div class="col-12 col-xl-4 col-lg-5 col-md-6">
                   <div class="home-text">
                     <div class="display-1">
-                      MAGIC IS IN
-                      <br />THE DETAILS
+                     Welcome To 
+                      <br />Nepune
                     </div>
                     <p class="white mb-5">
-                      Piaf is the combination of good design, quality code and attention for
-                      details.
-                      <br />
-                      <br />We used same design language for components, layouts, apps
-                      and other parts of the template.
-                      <br />
+                      We provide solutions to your AI requirements
                       <br />Hope you enjoy it!
                     </p>
                     <a class="btn btn-light btn-xl mr-2 mb-2" :href="adminRoot" target="_blank">
@@ -120,7 +115,7 @@
                 </div>
               </div>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-12 p-0">
                   <div class="home-carousel">
                     <glide-component :settings="slideSettings">
@@ -147,11 +142,11 @@
                 >
                   <i class="simple-icon-arrow-down"></i>
                 </a>
-              </div>
+              </div> -->
             </div>
           </div>
 
-          <div class="section">
+          <!-- <div class="section">
             <div class="container" id="features">
               <div class="row">
                 <div class="col-12 offset-0 col-lg-8 offset-lg-2 text-center">
@@ -362,11 +357,11 @@
               <div class="row">
                 <div class="col-12"></div>
                 <div class="col-12 text-center">
-                  <p class="mb-0">2020 © ColoredStrategies</p>
+                  <p class="mb-0">2021 © Nepune</p>
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
