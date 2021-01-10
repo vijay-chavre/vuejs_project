@@ -80,6 +80,26 @@ const routes = [
           }
         ]
       },
+
+      {
+        path: "images",
+        component: () =>
+          import(/* webpackChunkName: "setup" */ "./views/app/images"),
+        redirect: `${adminRoot}/images/img-prepare`,
+        children: [
+          {
+            path: "img-prepare",
+            component: () =>
+              import(/* webpackChunkName: "setup-intents" */ "./views/app/images/Prepare")
+          },
+          {
+            path: "img-analyse",
+            component: () =>
+              import(/* webpackChunkName: "setup-intents" */ "./views/app/images/Analyse")
+          }
+        ]
+      },
+      
       {
         path: "menu",
         component: () =>

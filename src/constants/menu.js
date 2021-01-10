@@ -57,6 +57,24 @@ const data = [
     }
     ]
   },
+
+  {
+    id: "images",
+    icon: "simple-icon-grid",
+    label: "menu.images",
+    to: `${adminRoot}/images`,
+    subs: [{
+      icon: "iconsminds-gaugage",
+      label: "menu.img-prepare",
+      to: `${adminRoot}/images/img-prepare`
+    },
+    {
+      icon: "iconsminds-monitor-analytics",
+      label: "menu.img-analyse",
+      to: `${adminRoot}/images/img-analyse`
+    }
+    ]
+  },
   //  {
   //   id: "menu",
   //   icon: "iconsminds-three-arrow-fork",
