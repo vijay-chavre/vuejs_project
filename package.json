@@ -7,7 +7,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "deploy": "aws s3 sync dist/ s3://onedimension.nepune.ai --profile vijay-nepune"
+    "deploy": "aws s3 rm s3://onedimension.nepune.ai --recursive --profile vijay-nepune && aws s3 sync dist/ s3://onedimension.nepune.ai --delete --profile vijay-nepune"
   },
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
