@@ -96,6 +96,21 @@ const data = [
     }
     ]
   },
+
+  {
+    id: "validations",
+    icon: "iconsminds-shop-4",
+    label: "menu.validation-validations",
+    to: `${adminRoot}/validations`,
+    //roles: [UserRole.Admin, UserRole.Editor],
+    subs: [{
+      icon: "simple-icon-briefcase",
+      label: "menu.validation-definations",
+      to: `${adminRoot}/validations/validation-definations`,
+      // roles: [UserRole.Admin],
+    }
+    ]
+  },
   //  {
   //   id: "menu",
   //   icon: "iconsminds-three-arrow-fork",

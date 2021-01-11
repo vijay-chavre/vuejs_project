@@ -123,6 +123,21 @@ const routes = [
           }
         ]
       },
+
+      {
+        path: "validations",
+        component: () =>
+          import(/* webpackChunkName: "images" */ "./views/app/images"),
+        redirect: `${adminRoot}/validations/validation-definations`,
+        children: [
+          {
+            path: "validation-definations",
+            component: () =>
+              import(/* webpackChunkName: "img-prepare" */ "./views/app/validations/Definations")
+          }
+        ]
+      },
+      
       
       {
         path: "menu",

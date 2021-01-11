@@ -53,8 +53,12 @@
     "training-generate": "Generate",
 
     "validation-validations": "Validations",
+    "validation-definations": "Definations",
 
     "prediction": "Predictions",
+    "prediction-batch": "Batch",
+    "prediction-one": "One",
+
 
     "charts.charts": "Charts",
     "reports-reports": "Reports",
