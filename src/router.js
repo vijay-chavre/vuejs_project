@@ -99,6 +99,30 @@ const routes = [
           }
         ]
       },
+
+      {
+        path: "training",
+        component: () =>
+          import(/* webpackChunkName: "images" */ "./views/app/images"),
+        redirect: `${adminRoot}/training/training-definations`,
+        children: [
+          {
+            path: "training-definations",
+            component: () =>
+              import(/* webpackChunkName: "img-prepare" */ "./views/app/training/Definations")
+          },
+          {
+            path: "training-process",
+            component: () =>
+              import(/* webpackChunkName: "img-analyse" */ "./views/app/training/Process")
+          },
+          {
+            path: "training-generate",
+            component: () =>
+              import(/* webpackChunkName: "img-analyse" */ "./views/app/training/Generate")
+          }
+        ]
+      },
       
       {
         path: "menu",

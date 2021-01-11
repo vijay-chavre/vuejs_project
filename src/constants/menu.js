@@ -57,7 +57,6 @@ const data = [
     }
     ]
   },
-
   {
     id: "images",
     icon: "simple-icon-grid",
@@ -72,6 +71,28 @@ const data = [
       icon: "iconsminds-monitor-analytics",
       label: "menu.img-analyse",
       to: `${adminRoot}/images/img-analyse`
+    }
+    ]
+  },
+  {
+    id: "training",
+    icon: "iconsminds-books",
+    label: "menu.training",
+    to: `${adminRoot}/training`,
+    subs: [{
+      icon: "iconsminds-gaugage",
+      label: "menu.training-definations",
+      to: `${adminRoot}/training/training-definations`
+    },
+    {
+      icon: "iconsminds-monitor-analytics",
+      label: "menu.training-process",
+      to: `${adminRoot}/training/training-process`
+    },
+    {
+      icon: "iconsminds-green-energy",
+      label: "menu.training-generate",
+      to: `${adminRoot}/training/training-generate`
     }
     ]
   },
