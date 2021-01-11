@@ -45,18 +45,18 @@ const routes = [
           {
             path: "intents",
             component: () =>
-              import(/* webpackChunkName : "setup-intents" */ "./views/app/setup/intents"),
+              import(/* webpackChunkName : "intents" */ "./views/app/setup/intents"),
             redirect: `${adminRoot}/setup/intents/all-intents`,
             children: [
               {
                 path: "all-intents",
                 component: () =>
-                  import(/* webpackChunkName: "setup-intents" */ "./views/app/setup/intents/All-Intents")
+                  import(/* webpackChunkName: "all-intents" */ "./views/app/setup/intents/All-Intents")
               },
               {
                 path: "add-intent",
                 component: () =>
-                  import(/* webpackChunkName: "setup-intents" */ "./views/app/setup/intents/Add-Intent")
+                  import(/* webpackChunkName: "add-intent" */ "./views/app/setup/intents/Add-Intent")
               }
             ]
           }
@@ -65,18 +65,18 @@ const routes = [
       {
         path: "data",
         component: () =>
-          import(/* webpackChunkName: "setup" */ "./views/app/data"),
+          import(/* webpackChunkName: "data" */ "./views/app/data"),
         redirect: `${adminRoot}/data/data-prepare`,
         children: [
           {
             path: "data-prepare",
             component: () =>
-              import(/* webpackChunkName: "setup-intents" */ "./views/app/data/Prepare")
+              import(/* webpackChunkName: "data-prepare" */ "./views/app/data/Prepare")
           },
           {
             path: "data-analyse",
             component: () =>
-              import(/* webpackChunkName: "setup-intents" */ "./views/app/data/Analyse")
+              import(/* webpackChunkName: "data-analyse" */ "./views/app/data/Analyse")
           }
         ]
       },
@@ -84,18 +84,18 @@ const routes = [
       {
         path: "images",
         component: () =>
-          import(/* webpackChunkName: "setup" */ "./views/app/images"),
+          import(/* webpackChunkName: "images" */ "./views/app/images"),
         redirect: `${adminRoot}/images/img-prepare`,
         children: [
           {
             path: "img-prepare",
             component: () =>
-              import(/* webpackChunkName: "setup-intents" */ "./views/app/images/Prepare")
+              import(/* webpackChunkName: "img-prepare" */ "./views/app/images/Prepare")
           },
           {
             path: "img-analyse",
             component: () =>
-              import(/* webpackChunkName: "setup-intents" */ "./views/app/images/Analyse")
+              import(/* webpackChunkName: "img-analyse" */ "./views/app/images/Analyse")
           }
         ]
       },
@@ -188,7 +188,7 @@ const routes = [
 const router = new VueRouter({
   linkActiveClass: "active",
   routes,
-  mode: "history",
+  mode: "hash"
 });
 router.beforeEach(AuthGuard);
 export default router;

@@ -20,7 +20,6 @@ const getters = {
 const mutations = {
   changeSideMenuStatus(state, payload) {
     let { classNames, step: clickIndex, selectedMenuHasSubItems } = payload;
-    debugger
     const currentClasses = classNames ? classNames.split(' ').filter(x => x !== '') : '';
     let nextClasses = '';
     if (!selectedMenuHasSubItems) {

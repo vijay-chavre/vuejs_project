@@ -7,11 +7,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "cache-clear": "aws cloudfront create-invalidation --distribution-id=E1F64W2P8FZNQ0 --paths / --profile=vijay-nepune",
     "deploy": "aws s3 rm s3://onedimension.nepune.ai --recursive --profile vijay-nepune && aws s3 sync dist/ s3://onedimension.nepune.ai --delete --profile vijay-nepune"
   },
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap-vue": "^2.15.0",
     "chart.js": "2.9.3",
     "core-js": "^3.6.5",

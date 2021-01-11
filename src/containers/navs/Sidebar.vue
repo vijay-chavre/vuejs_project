@@ -16,14 +16,15 @@
               <i :class="item.icon" />
               {{ $t(item.label) }}
             </a>
-            <a
+            <router-link
               v-else-if="item.subs && item.subs.length>0"
-              @click.prevent="openSubMenu($event,item)"
-              :href="`#${item.to}`"
+              to=""
             >
+             <div @click.prevent="openSubMenu($event,item)" class="menu-item" >
               <i :class="item.icon" />
               {{ $t(item.label) }}
-            </a>
+              </div>
+            </router-link>
             <router-link
               v-else
               @click.native="changeSelectedParentHasNoSubmenu(item.id)"
@@ -53,10 +54,10 @@
             :key="`sub_${subIndex}`"
             :class="{'has-sub-item' : sub.subs && sub.subs.length > 0 , 'active' : $route.path.indexOf(sub.to)>-1}"
           >
-            <a v-if="sub.newWindow" :href="sub.to" rel="noopener noreferrer" target="_blank">
+            <router-link v-if="sub.newWindow" :to="sub.to" rel="noopener noreferrer" target="_blank">
               <i :class="sub.icon" />
               <span>{{ $t(sub.label) }}</span>
-            </a>
+            </router-link>
             <template v-else-if="sub.subs &&  sub.subs.length > 0">
               <b-link
                 v-b-toggle="`menu_${itemIndex}_${subIndex}`"
@@ -73,15 +74,15 @@
                     :key="`third_${itemIndex}_${subIndex}_${thirdIndex}`"
                     :class="{'third-level-menu':true , 'active' : $route.path ===thirdLevelSub.to}"
                   >
-                    <a
+                    <router-link
                       v-if="thirdLevelSub.newWindow"
-                      :href="thirdLevelSub.to"
+                      :to="thirdLevelSub.to"
                       rel="noopener noreferrer"
                       target="_blank"
                     >
                       <i :class="thirdLevelSub.icon" />
                       <span>{{ $t(thirdLevelSub.label) }}</span>
-                    </a>
+                    </router-link>
                     <router-link v-else :to="thirdLevelSub.to">
                       <i :class="thirdLevelSub.icon" />
                       <span>{{ $t(thirdLevelSub.label) }}</span>
@@ -344,3 +345,32 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .menu-item {
+    height: 110px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    border-bottom: 1px solid #f3f3f3;
+    color: #3a3a3a;
+    -webkit-transition: color 300ms;
+    transition: color 300ms;
+    -webkit-transition: background 300ms;
+    transition: background 300ms;
+    width: 100%;
+  }
+</style>

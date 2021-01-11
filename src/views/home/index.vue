@@ -102,16 +102,16 @@
                       We provide solutions to your AI requirements
                       <br />Hope you enjoy it!
                     </p>
-                    <a class="btn btn-light btn-xl mr-2 mb-2" :href="adminRoot" target="_blank">
+                    <router-link class="btn btn-light btn-xl mr-2 mb-2" :to="adminRoot">
                       VIEW NOW
                       <i class="simple-icon-arrow-right"></i>
-                    </a>
+                    </router-link>
                   </div>
                 </div>
                 <div class="col-12 col-xl-7 offset-xl-1 col-lg-7 col-md-6 d-none d-md-block">
-                  <a :href="adminRoot" target="_blank">
+                  <router-link :to="adminRoot" target="_blank">
                     <img alt="hero" src="/assets/img/landing-page/home-hero.png" />
-                  </a>
+                  </router-link>
                 </div>
               </div>
 
