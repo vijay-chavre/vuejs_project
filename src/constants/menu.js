@@ -96,10 +96,9 @@ const data = [
     }
     ]
   },
-
   {
     id: "validations",
-    icon: "iconsminds-shop-4",
+    icon: "iconsminds-scale",
     label: "menu.validation-validations",
     to: `${adminRoot}/validations`,
     //roles: [UserRole.Admin, UserRole.Editor],
@@ -111,39 +110,22 @@ const data = [
     }
     ]
   },
-  //  {
-  //   id: "menu",
-  //   icon: "iconsminds-three-arrow-fork",
-  //   label: "menu.menu",
-  //   to: `${adminRoot}/menu`,
-  //   subs: [{
-  //     icon: "simple-icon-logout",
-  //     label: "menu.types",
-  //     to: `${adminRoot}/menu/types`
-  //   },
-  //   {
-  //     icon: "simple-icon-layers",
-  //     label: "menu.levels",
-  //     to: `${adminRoot}/menu/levels`,
-  //     subs: [{
-  //       icon: "simple-icon-arrow-right",
-  //       label: "menu.third-level-1",
-  //       to: `${adminRoot}/menu/levels/third-level-1`
-  //     },
-  //     {
-  //       icon: "simple-icon-arrow-right",
-  //       label: "menu.third-level-2",
-  //       to: `${adminRoot}/menu/levels/third-level-2`
-  //     },
-  //     {
-  //       icon: "simple-icon-arrow-right",
-  //       label: "menu.third-level-3",
-  //       to: `${adminRoot}/menu/levels/third-level-3`
-  //     }
-  //     ]
-  //   }
-  //   ]
-  // },
-
+  {
+    id: "prediction",
+    icon: "iconsminds-gift-box",
+    label: "menu.prediction",
+    to: `${adminRoot}/prediction`,
+    subs: [{
+      icon: "iconsminds-box-with-folders",
+      label: "menu.prediction-batch",
+      to: `${adminRoot}/prediction/prediction-batch`
+    },
+    {
+      icon: "iconsminds-monitor-analytics",
+      label: "menu.prediction-one",
+      to: `${adminRoot}/prediction/prediction-one`
+    }
+    ]
+  },
 ];
 export default data;

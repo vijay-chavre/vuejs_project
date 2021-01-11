@@ -80,7 +80,6 @@ const routes = [
           }
         ]
       },
-
       {
         path: "images",
         component: () =>
@@ -99,7 +98,6 @@ const routes = [
           }
         ]
       },
-
       {
         path: "training",
         component: () =>
@@ -109,17 +107,17 @@ const routes = [
           {
             path: "training-definations",
             component: () =>
-              import(/* webpackChunkName: "img-prepare" */ "./views/app/training/Definations")
+              import(/* webpackChunkName: "training-definations" */ "./views/app/training/Definations")
           },
           {
             path: "training-process",
             component: () =>
-              import(/* webpackChunkName: "img-analyse" */ "./views/app/training/Process")
+              import(/* webpackChunkName: "training-process" */ "./views/app/training/Process")
           },
           {
             path: "training-generate",
             component: () =>
-              import(/* webpackChunkName: "img-analyse" */ "./views/app/training/Generate")
+              import(/* webpackChunkName: "training-generate" */ "./views/app/training/Generate")
           }
         ]
       },
@@ -133,45 +131,25 @@ const routes = [
           {
             path: "validation-definations",
             component: () =>
-              import(/* webpackChunkName: "img-prepare" */ "./views/app/validations/Definations")
+              import(/* webpackChunkName: "defiations" */ "./views/app/validations/Definations")
           }
         ]
       },
-      
-      
       {
-        path: "menu",
+        path: "prediction",
         component: () =>
-          import(/* webpackChunkName: "menu" */ "./views/app/menu"),
-        redirect: `${adminRoot}/menu/types`,
+          import(/* webpackChunkName: "images" */ "./views/app/prediction"),
+        redirect: `${adminRoot}/prediction/prediction-batch`,
         children: [
           {
-            path: "types",
+            path: "prediction-batch",
             component: () =>
-              import(/* webpackChunkName : "menu-types" */ "./views/app/menu/Types")
+              import(/* webpackChunkName: "prediction-batch" */ "./views/app/prediction/Batch")
           },
           {
-            path: "levels",
+            path: "prediction-one",
             component: () =>
-              import(/* webpackChunkName : "menu-levels" */ "./views/app/menu/levels"),
-            redirect: `${adminRoot}/menu/levels/third-level-1`,
-            children: [
-              {
-                path: "third-level-1",
-                component: () =>
-                  import(/* webpackChunkName: "menu-levels" */ "./views/app/menu/levels/Third-level-1")
-              },
-              {
-                path: "third-level-2",
-                component: () =>
-                  import(/* webpackChunkName: "menu-levels" */ "./views/app/menu/levels/Third-level-2")
-              },
-              {
-                path: "third-level-3",
-                component: () =>
-                  import(/* webpackChunkName: "menu-levels" */ "./views/app/menu/levels/Third-level-3")
-              }
-            ]
+              import(/* webpackChunkName: "prediction-one" */ "./views/app/prediction/One")
           }
         ]
       },
