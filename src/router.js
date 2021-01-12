@@ -102,12 +102,12 @@ const routes = [
         path: "training",
         component: () =>
           import(/* webpackChunkName: "images" */ "./views/app/images"),
-        redirect: `${adminRoot}/training/training-definations`,
+        redirect: `${adminRoot}/training/training-definition`,
         children: [
           {
-            path: "training-definations",
+            path: "training-definition",
             component: () =>
-              import(/* webpackChunkName: "training-definations" */ "./views/app/training/Definations")
+              import(/* webpackChunkName: "training-definition" */ "./views/app/training/Definations")
           },
           {
             path: "training-process",
@@ -126,10 +126,10 @@ const routes = [
         path: "validations",
         component: () =>
           import(/* webpackChunkName: "images" */ "./views/app/images"),
-        redirect: `${adminRoot}/validations/validation-definations`,
+        redirect: `${adminRoot}/validations/validation-definition`,
         children: [
           {
-            path: "validation-definations",
+            path: "validation-definition",
             component: () =>
               import(/* webpackChunkName: "defiations" */ "./views/app/validations/Definations")
           }

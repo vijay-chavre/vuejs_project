@@ -81,8 +81,8 @@ const data = [
     to: `${adminRoot}/training`,
     subs: [{
       icon: "iconsminds-gaugage",
-      label: "menu.training-definations",
-      to: `${adminRoot}/training/training-definations`
+      label: "menu.training-definition",
+      to: `${adminRoot}/training/training-definition`
     },
     {
       icon: "iconsminds-monitor-analytics",
@@ -104,8 +104,8 @@ const data = [
     //roles: [UserRole.Admin, UserRole.Editor],
     subs: [{
       icon: "simple-icon-briefcase",
-      label: "menu.validation-definations",
-      to: `${adminRoot}/validations/validation-definations`,
+      label: "menu.validation-definition",
+      to: `${adminRoot}/validations/validation-definition`,
       // roles: [UserRole.Admin],
     }
     ]

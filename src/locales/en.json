@@ -48,12 +48,12 @@
     "runs-usage-history": "Usage History",
 
     "training": "Training",
-    "training-definations": "Definations",
+    "training-definition": "Definitions",
     "training-process": "Process",
     "training-generate": "Generate",
 
     "validation-validations": "Validations",
-    "validation-definations": "Definations",
+    "validation-definition": "Definitions",
 
     "prediction": "Predictions",
     "prediction-batch": "Batch",

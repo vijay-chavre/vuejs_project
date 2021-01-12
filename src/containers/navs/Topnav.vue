@@ -108,11 +108,11 @@
                 <i class="iconsminds-photo d-block" />
                 {{$t('menu.images')}}
               </router-link>
-              <router-link tag="a" :to="`${adminRoot}/training/training-definations`" class="icon-menu-item">
+              <router-link tag="a" :to="`${adminRoot}/training/training-definition`" class="icon-menu-item">
                 <i class="iconsminds-books d-block" />
                 {{$t('menu.training')}}
               </router-link>
-              <router-link tag="a" :to="`${adminRoot}/validations/validation-definations`" class="icon-menu-item">
+              <router-link tag="a" :to="`${adminRoot}/validations/validation-definition`" class="icon-menu-item">
                 <i class="iconsminds-scale d-block" />
                 {{$t('menu.validations')}}
               </router-link>
