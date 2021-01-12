@@ -60,8 +60,8 @@
     "prediction-one": "One",
 
 
-    "charts.charts": "Charts",
-    "reports-reports": "Reports",
+    "charts": "Charts",
+    "reports": "Reports",
 
 
     "pages": "Pages",
@@ -88,7 +88,6 @@
     "buttons": "Buttons",
     "cards": "Cards",
     "carousel": "Carousel",
-    "charts": "Charts",
     "collapse": "Collapse",
     "dropdowns": "Dropdowns",
     "editors": "Editors",

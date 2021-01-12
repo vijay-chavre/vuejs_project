@@ -153,6 +153,16 @@ const routes = [
           }
         ]
       },
+
+      {
+        path: `${adminRoot}/charts`,
+        component: () => import(/* webpackChunkName: "charts" */ "./views/app/charts"),
+      },
+      {
+        path: `${adminRoot}/reports`,
+        component: () => import(/* webpackChunkName: "reports" */ "./views/app/reports"),
+      },
+
       {
         path: "blank-page",
         component: () =>

@@ -59,7 +59,7 @@ const data = [
   },
   {
     id: "images",
-    icon: "simple-icon-grid",
+    icon: "iconsminds-photo",
     label: "menu.images",
     to: `${adminRoot}/images`,
     subs: [{
@@ -126,6 +126,19 @@ const data = [
       to: `${adminRoot}/prediction/prediction-one`
     }
     ]
+  },
+
+  {
+    id: "charts",
+    icon: "simple-icon-chart",
+    label: "menu.charts",
+    to: `${adminRoot}/charts`,
+  },
+  {
+    id: "reports",
+    icon: "iconsminds-statistic",
+    label: "menu.reports",
+    to: `${adminRoot}/reports`,
   },
 ];
 export default data;
