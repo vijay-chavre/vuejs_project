@@ -81,36 +81,59 @@
             toggle-class="header-icon"
             menu-class="position-absolute mt-3 iconMenuDropdown"
             no-caret
+            v-b-scrollspy:nav-scroller
+            
           >
             <template slot="button-content">
               <i class="simple-icon-grid" />
             </template>
-            <div>
+            <vue-perfect-scrollbar :settings="{ suppressScrollX: true, wheelPropagation: false }">
+            <div  class="d-flex flex-column" style="overflow-y: scroll height: 100px">
+             <div  class="d-flex flex-row ">
               <router-link tag="a" :to="`${adminRoot}/dashboards/default`" class="icon-menu-item">
                 <i class="iconsminds-shop-4 d-block" />
                 {{$t('menu.dashboards')}}
               </router-link>
-              <router-link tag="a" :to="`${adminRoot}/ui`" class="icon-menu-item">
-                <i class="iconsminds-pantone d-block" />
-                {{$t('menu.ui')}}
+              <router-link tag="a" :to="`${adminRoot}/setup/intents/all-intents`" class="icon-menu-item">
+                <i class="iconsminds-three-arrow-fork d-block" />
+                {{$t('menu.setup')}}
               </router-link>
-              <router-link tag="a" :to="`${adminRoot}/ui/components/charts`" class="icon-menu-item">
-                <i class="iconsminds-bar-chart-4 d-block" />
+              <router-link tag="a" :to="`${adminRoot}/data/data-prepare`" class="icon-menu-item">
+                <i class="iconsminds-data-center d-block" />
+                {{$t('menu.data')}}
+              </router-link>
+             </div>
+              <div  class="d-flex flex-row">
+              <router-link tag="a" :to="`${adminRoot}/images/img-prepare`" class="icon-menu-item">
+                <i class="iconsminds-photo d-block" />
+                {{$t('menu.images')}}
+              </router-link>
+              <router-link tag="a" :to="`${adminRoot}/training/training-definations`" class="icon-menu-item">
+                <i class="iconsminds-books d-block" />
+                {{$t('menu.training')}}
+              </router-link>
+              <router-link tag="a" :to="`${adminRoot}/validations/validation-definations`" class="icon-menu-item">
+                <i class="iconsminds-scale d-block" />
+                {{$t('menu.validations')}}
+              </router-link>
+              </div>
+              <div  class="d-flex flex-row">
+              <router-link tag="a" :to="`${adminRoot}/prediction/prediction-batch`" class="icon-menu-item">
+                <i class="iconsminds-gift-box d-block" />
+                {{$t('menu.prediction')}}
+              </router-link>
+              <router-link tag="a" :to="`${adminRoot}/charts`" class="icon-menu-item">
+                <i class="simple-icon-chart d-block" />
                 {{$t('menu.charts')}}
               </router-link>
-              <router-link tag="a" :to="`${adminRoot}/applications/chat`" class="icon-menu-item">
-                <i class="iconsminds-speach-bubble d-block" />
-                {{$t('menu.chat')}}
+              <router-link tag="a" :to="`${adminRoot}/reports`" class="icon-menu-item">
+                <i class="iconsminds-statistic d-block" />
+                {{$t('menu.reports')}}
               </router-link>
-              <router-link tag="a" :to="`${adminRoot}/applications/survey`" class="icon-menu-item">
-                <i class="iconsminds-formula d-block" />
-                {{$t('menu.survey')}}
-              </router-link>
-              <router-link tag="a" :to="`${adminRoot}/applications/todo`" class="icon-menu-item">
-                <i class="iconsminds-check d-block" />
-                {{$t('menu.todo')}}
-              </router-link>
-            </div>
+              </div>
+             </div>
+             
+            </vue-perfect-scrollbar>
           </b-dropdown>
         </div>
 
