@@ -1,4 +1,5 @@
 const CopyPlugin = require('copy-webpack-plugin')
+const path = require('path');
 
 module.exports = {
 
@@ -41,7 +42,11 @@ module.exports = {
         patterns: [
           { from: 'src/assets/img', to: 'assets/img' },
           { from: 'src/assets/logos', to: 'assets/logos' },
-          { from: 'src/assets/fonts', to: 'assets/fonts' }
+          { from: 'src/assets/fonts', to: 'assets/fonts' },
+          {
+            from: path.resolve(__dirname, './node_modules/blockly/media'),
+            to: path.resolve(__dirname, 'dist/media')
+          }
         ],
       }),
     ]

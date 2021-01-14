@@ -27,6 +27,9 @@ import VueScrollTo from 'vue-scrollto'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import { getCurrentLanguage } from './utils'
+//Add unimported components to ignore list to prevent warnings.
+Vue.config.ignoredElements = ['field','block','category','xml','mutation','value','sep']
+
 
 Vue.use(BootstrapVue);
 Vue.use(VueI18n);
