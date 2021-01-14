@@ -31,11 +31,11 @@ const data = [
           label: "menu.all-intents",
           to: `${adminRoot}/setup/intents/all-intents`
         },
-        {
-          icon: "simple-icon-arrow-right",
-          label: "menu.add-intent",
-          to: `${adminRoot}/setup/intents/add-intent`
-        }
+        // {
+        //   icon: "simple-icon-arrow-right",
+        //   label: "menu.add-intent",
+        //   to: `${adminRoot}/setup/intents/add-intent`
+        // }
         ]
       }
     ]

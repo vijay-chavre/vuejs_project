@@ -156,6 +156,17 @@
     "start": "Start",
     "single": "Single"
   },
+  "common": {
+    "page-size": "Page Size"
+  },
+  "setup": {
+    "intent-list": "All Intents",
+    "add-new-intent": "Add New Intent",
+    "edit-intent" : "Edit Intent",
+    "intent-name" : "Name",
+    "intent-state": "State",
+    "intent-description": "Description"
+  },
   "dashboards": {
     "pending-orders": "Pending Orders",
     "completed-orders": "Completed Orders",
