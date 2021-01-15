@@ -148,7 +148,7 @@ export default {
 
         {
           key: "state",
-          label: "Sate",
+          label: "State",
           sortable: true,
           class: "text-center",
         },

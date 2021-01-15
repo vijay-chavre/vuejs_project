@@ -85,21 +85,21 @@ const actions = {
         commit("getIntents")
         setTimeout(() => {
             commit('getIntentItemsSuccess', dataItems)
-        }, 2000)
+        }, 1000)
     },
 
     addNewIntent({commit}, payload) {
         commit("getIntents")
         setTimeout(() => {
             commit('addNewIntent', payload)
-        }, 2000)
+        }, 1000)
     },
 
     deleteIntent({commit}, payload) {
         commit("setLoading")
         setTimeout(() => {
             commit('deleteIntent', payload)
-        }, 2000)
+        }, 1000)
     }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar" @click.stop="()=>{}">
+  <div class="sidebar" @click.stop="() => {}">
     <div class="main-menu">
       <vue-perfect-scrollbar
         class="scroll"
@@ -7,22 +7,28 @@
       >
         <ul class="list-unstyled">
           <li
-            v-for="(item,index) in filteredMenuItems(menuItems)"
-            :class="{ 'active' : (selectedParentMenu === item.id && viewingParentMenu === '') || viewingParentMenu === item.id }"
+            v-for="(item, index) in filteredMenuItems(menuItems)"
+            :class="{
+              active:
+                (selectedParentMenu === item.id && viewingParentMenu === '') ||
+                viewingParentMenu === item.id,
+            }"
             :key="`parent_${index}`"
             :data-flag="item.id"
           >
-            <a v-if="item.newWindow" :href="item.to" rel="noopener noreferrer" target="_blank">
+            <a
+              v-if="item.newWindow"
+              :href="item.to"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <i :class="item.icon" />
               {{ $t(item.label) }}
             </a>
-            <router-link
-              v-else-if="item.subs && item.subs.length>0"
-              to=""
-            >
-             <div @click.prevent="openSubMenu($event,item)" class="menu-item" >
-              <i :class="item.icon" />
-              {{ $t(item.label) }}
+            <router-link v-else-if="item.subs && item.subs.length > 0" to="">
+              <div @click.prevent="openSubMenu($event, item)" class="menu-item">
+                <i :class="item.icon" />
+                {{ $t(item.label) }}
               </div>
             </router-link>
             <router-link
@@ -44,35 +50,51 @@
         :settings="{ suppressScrollX: true, wheelPropagation: false }"
       >
         <ul
-          v-for="(item,itemIndex) in filteredMenuItems(menuItems)"
-          :class="{'list-unstyled':true, 'd-block' : (selectedParentMenu === item.id && viewingParentMenu === '') || viewingParentMenu === item.id }"
+          v-for="(item, itemIndex) in filteredMenuItems(menuItems)"
+          :class="{
+            'list-unstyled': true,
+            'd-block':
+              (selectedParentMenu === item.id && viewingParentMenu === '') ||
+              viewingParentMenu === item.id,
+          }"
           :data-parent="item.id"
           :key="`sub_${item.id}`"
         >
           <li
-            v-for="(sub,subIndex) in filteredMenuItems(item.subs)"
+            v-for="(sub, subIndex) in filteredMenuItems(item.subs)"
             :key="`sub_${subIndex}`"
-            :class="{'has-sub-item' : sub.subs && sub.subs.length > 0 , 'active' : $route.path.indexOf(sub.to)>-1}"
+            :class="{
+              'has-sub-item': sub.subs && sub.subs.length > 0,
+              active: $route.path.indexOf(sub.to) > -1,
+            }"
           >
-            <router-link v-if="sub.newWindow" :to="sub.to" rel="noopener noreferrer" target="_blank">
+            <router-link
+              v-if="sub.newWindow"
+              :to="sub.to"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <i :class="sub.icon" />
               <span>{{ $t(sub.label) }}</span>
             </router-link>
-            <template v-else-if="sub.subs &&  sub.subs.length > 0">
+            <template v-else-if="sub.subs && sub.subs.length > 0">
               <b-link
                 v-b-toggle="`menu_${itemIndex}_${subIndex}`"
                 variant="link"
                 class="rotate-arrow-icon opacity-50"
               >
                 <i class="simple-icon-arrow-down"></i>
-                <span class="d-inline-block">{{$t(sub.label)}}</span>
+                <span class="d-inline-block">{{ $t(sub.label) }}</span>
               </b-link>
               <b-collapse visible :id="`menu_${itemIndex}_${subIndex}`">
                 <ul class="list-unstyled third-level-menu">
                   <li
                     v-for="(thirdLevelSub, thirdIndex) in filteredMenuItems(sub.subs)"
                     :key="`third_${itemIndex}_${subIndex}_${thirdIndex}`"
-                    :class="{'third-level-menu':true , 'active' : $route.path ===thirdLevelSub.to}"
+                    :class="{
+                      'third-level-menu': true,
+                      active: $route.path === thirdLevelSub.to,
+                    }"
                   >
                     <router-link
                       v-if="thirdLevelSub.newWindow"
@@ -104,10 +126,7 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import {
-  menuHiddenBreakpoint,
-  subHiddenBreakpoint,
-} from "../../constants/config";
+import { menuHiddenBreakpoint, subHiddenBreakpoint } from "../../constants/config";
 import menuItems from "../../constants/menu";
 import { UserRole } from "../../utils/auth.roles";
 
@@ -137,9 +156,7 @@ export default {
       "changeSelectedMenuHasSubItems",
     ]),
     selectMenu() {
-      const currentParentUrl = this.$route.path
-        .split("/")
-        .filter((x) => x !== "")[1];
+      const currentParentUrl = this.$route.path.split("/").filter((x) => x !== "")[1];
       if (currentParentUrl !== undefined || currentParentUrl !== null) {
         this.selectedParentMenu = currentParentUrl.toLowerCase();
       } else {
@@ -148,9 +165,7 @@ export default {
       this.isCurrentMenuHasSubItem();
     },
     isCurrentMenuHasSubItem() {
-      const menuItem = this.menuItems.find(
-        (x) => x.id === this.selectedParentMenu
-      );
+      const menuItem = this.menuItems.find((x) => x.id === this.selectedParentMenu);
       const isCurrentMenuHasSubItem =
         menuItem && menuItem.subs && menuItem.subs.length > 0 ? true : false;
       if (isCurrentMenuHasSubItem != this.selectedMenuHasSubItems) {
@@ -242,10 +257,7 @@ export default {
     },
     toggle() {
       const currentClasses = this.menuType.split(" ").filter((x) => x !== "");
-      if (
-        currentClasses.includes("menu-sub-hidden") &&
-        this.menuClickCount === 3
-      ) {
+      if (currentClasses.includes("menu-sub-hidden") && this.menuClickCount === 3) {
         this.changeSideMenuStatus({
           step: 2,
           classNames: this.menuType,
@@ -307,8 +319,7 @@ export default {
     filteredMenuItems(menuItems) {
       return menuItems
         ? menuItems.filter(
-            (x) =>
-              !x.roles || (x.roles && x.roles.includes(this.currentUser.role))
+            (x) => !x.roles || (x.roles && x.roles.includes(this.currentUser.role))
           )
         : [];
     },
@@ -347,30 +358,30 @@ export default {
 </script>
 
 <style scoped>
-  .menu-item {
-    height: 110px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 400;
-    border-bottom: 1px solid #f3f3f3;
-    color: #3a3a3a;
-    -webkit-transition: color 300ms;
-    transition: color 300ms;
-    -webkit-transition: background 300ms;
-    transition: background 300ms;
-    width: 100%;
-  }
+.menu-item {
+  height: 111px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  border-bottom: 0px solid #f3f3f3;
+
+  -webkit-transition: color 300ms;
+  transition: color 300ms;
+  -webkit-transition: background 300ms;
+  transition: background 300ms;
+  width: 100%;
+}
 </style>

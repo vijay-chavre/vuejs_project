@@ -82,7 +82,7 @@ const routes = [
       },
       {
         path: `scratch-pad`,
-        component: () => import(/* webpackChunkName: "dashboards" */ "./views/app/ScratchPad"),
+        component: () => import(/* webpackChunkName: "scratchpad" */ "./views/app/ScratchPad"),
       },
       {
         path: "images",
