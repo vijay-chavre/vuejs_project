@@ -26,11 +26,7 @@
         </b-dropdown>
       </div>
     </div>
-    <add-new-modal
-      :categories="categories"
-      :labels="labels"
-      :statuses="statuses"
-    ></add-new-modal>
+    <add-new-modal />
     <b-row>
       <b-colxx xxs="12">
         <b-card class="mb-4" :title="$t('setup.intent-list')">
@@ -61,7 +57,7 @@
               >
                 Edit
               </b-button>
-              <b-button size="sm" @click="row.toggleDetails"> Delete </b-button>
+              <b-button size="sm" @click="deleteIntent(row.item)"> Delete </b-button>
             </template>
 
             <template #row-details="row">
@@ -195,7 +191,7 @@ export default {
     this.totalRows = this?.intentItems?.length;
   },
   methods: {
-    ...mapActions(["getIntentItems"]),
+    ...mapActions(["getIntentItems", "deleteIntent"]),
     changePageSize(option) {
       this.perPage = option;
     },
