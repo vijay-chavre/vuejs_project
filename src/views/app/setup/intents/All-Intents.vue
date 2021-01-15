@@ -191,6 +191,9 @@ export default {
     this.getIntentItems();
     this.totalRows = this?.intentItems?.length;
   },
+  updated() {
+    this.totalRows = this?.intentItems?.length;
+  },
   methods: {
     ...mapActions(["getIntentItems"]),
     changePageSize(option) {
