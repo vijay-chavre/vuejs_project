@@ -15,7 +15,7 @@
           class="top-right-button"
           >{{ $t("todo.add-new") }}</b-button
         >
-        <b-dropdown
+        <!-- <b-dropdown
           id="ddown1"
           :text="`${$t('common.page-size')} ${perPage}`"
           class="mr-1 float-md-left btn-group"
@@ -27,7 +27,7 @@
             @click="changePageSize(option)"
             >{{ option }}</b-dropdown-item
           >
-        </b-dropdown>
+        </b-dropdown> -->
       </div>
     </div>
 
