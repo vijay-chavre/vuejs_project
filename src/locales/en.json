@@ -39,7 +39,7 @@
     "data-prepare": "Prepare",
     "data-analyse": "Analyse",
 
-    "scratch": "Scratch Pad",
+    "scratch": "Models",
 
     "images": "Images",
     "img-prepare": "Prepare",
@@ -162,6 +162,7 @@
   "setup": {
     "intent-list": "All Intents",
     "add-new-intent": "Add New Intent",
+    "edit-new-intent": "Edit Intent",
     "edit-intent" : "Edit Intent",
     "intent-name" : "Name",
     "intent-state": "State",

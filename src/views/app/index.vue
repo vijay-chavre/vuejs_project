@@ -9,7 +9,7 @@ import AppLayout from "../../layouts/AppLayout";
 
 export default {
   components: {
-    "app-layout": AppLayout
-  }
+    "app-layout": AppLayout,
+  },
 };
 </script>

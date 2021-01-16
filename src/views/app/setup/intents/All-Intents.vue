@@ -8,9 +8,13 @@
     </b-row>
     <div class="d-flex flex-row mb-4">
       <div class="d-inline-block">
-        <b-button v-b-modal.modalright size="lg" class="top-right-button">{{
-          $t("todo.add-new")
-        }}</b-button>
+        <b-button
+          v-b-modal.modalright
+          @click="setEditMode()"
+          size="lg"
+          class="top-right-button"
+          >{{ $t("todo.add-new") }}</b-button
+        >
         <b-dropdown
           id="ddown1"
           :text="`${$t('common.page-size')} ${perPage}`"
@@ -26,7 +30,13 @@
         </b-dropdown>
       </div>
     </div>
-    <add-new-modal />
+
+    <add-new-modal
+      :currentEditIntent="selectedIntent"
+      :isEditMode.sync="isEditMode"
+      :isShowModal.sync="isShowModal"
+    ></add-new-modal>
+
     <b-row>
       <b-colxx xxs="12">
         <b-card class="mb-4" :title="$t('setup.intent-list')">
@@ -42,25 +52,33 @@
             :sort-desc.sync="sortDesc"
             :sort-direction="sortDirection"
             @filtered="onFiltered"
-            small
             :busy="isLoading"
+            small
           >
-            <template #cell(name)="row">
+            <!-- <template #cell(name)="row">
               {{ row.value.first }} {{ row.value.last }}
-            </template>
+            </template> -->
 
             <template #cell(actions)="row">
               <b-button
                 size="sm"
-                @click="info(row.item, row.index, $event.target)"
+                v-b-modal.modalright
+                @click="setEditMode(row.item)"
                 class="mr-1"
+                variant="outline-primary"
               >
-                Edit
+                <i class="simple-icon-pencil" />
               </b-button>
-              <b-button size="sm" @click="deleteIntent(row.item)"> Delete </b-button>
+              <b-button
+                variant="outline-primary"
+                size="sm"
+                @click="deleteIntent(row.item)"
+              >
+                <i class="simple-icon-trash" />
+              </b-button>
             </template>
 
-            <template #row-details="row">
+            <!-- <template #row-details="row">
               <b-card>
                 <ul>
                   <li v-for="(value, key) in row.item" :key="key">
@@ -68,7 +86,7 @@
                   </li>
                 </ul>
               </b-card>
-            </template>
+            </template> -->
 
             <template #table-busy>
               <div class="text-center my-2">
@@ -156,7 +174,10 @@ export default {
         { key: "actions", label: "Actions" },
       ],
       totalRows: this?.intentItems?.length || 1,
+      selectedIntent: undefined,
       currentPage: 1,
+      isEditMode: false,
+      isShowModal: false,
       perPage: 5,
       pageOptions: [5, 10, 15],
       sortBy: "",
@@ -172,7 +193,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["isLoading", "intentItems", "todoError"]),
+    ...mapGetters(["isLoading", "intentItems"]),
     sortOptions() {
       // Create an options list from our fields
       return this.fields
@@ -186,12 +207,22 @@ export default {
     // Set the initial number of items
     this.getIntentItems();
     this.totalRows = this?.intentItems?.length;
+    this.setEditMode();
   },
   updated() {
     this.totalRows = this?.intentItems?.length;
   },
   methods: {
     ...mapActions(["getIntentItems", "deleteIntent"]),
+
+    setEditMode(intent) {
+      this.isEditMode = intent ? true : false;
+      this.isShowModal = intent ? true : false;
+      this.selectedIntent = intent ? intent : { state: "", description: "", name: "" };
+    },
+    beforeDestroy() {
+      this.isEditMode = false;
+    },
     changePageSize(option) {
       this.perPage = option;
     },

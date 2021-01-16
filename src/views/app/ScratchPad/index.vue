@@ -1,40 +1,33 @@
-
 <template>
-  <div class="blockly-app">
-    <BlocklyComponent class="blockly2" :options="options" ref="foo"></BlocklyComponent>
-    <!-- <p id="code">
-      <button v-on:click="showCode()">Show JavaScript</button>
-      <pre v-html="code"></pre>
-    </p> -->
-  </div>
+  <b-row>
+    <b-colxx xxs="12">
+      <BlocklyComponent class="blockly2" :options="options" ref="foo"></BlocklyComponent>
+    </b-colxx>
+  </b-row>
 </template>
 
-
 <script>
+import BlocklyComponent from "../../../components/Blockly/BlocklyComponent.vue";
+import "./prompt";
 
-import BlocklyComponent from '../../../components/Blockly/BlocklyComponent.vue'
-import './prompt';
-
-import BlocklyJS from 'blockly/javascript';
+import BlocklyJS from "blockly/javascript";
 
 export default {
   components: {
-    BlocklyComponent
+    BlocklyComponent,
   },
-  data(){
+  data() {
     return {
-      code: '',
+      code: "",
       options: {
-        media: 'media/',
-        grid:
-          {
-            spacing: 25,
-            length: 3,
-            colour: '#ccc',
-            snap: true
-          },
-        toolbox:
-        `<xml>
+        media: "media/",
+        grid: {
+          spacing: 25,
+          length: 3,
+          colour: "#ccc",
+          snap: true,
+        },
+        toolbox: `<xml>
           <category name="Logic" colour="%{BKY_LOGIC_HUE}">
             <block type="controls_if"></block>
             <block type="logic_compare"></block>
@@ -66,19 +59,17 @@ export default {
           </category>
           <category name="Variables" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}">
             </category>
-        </xml>`
-      }
-    }
+        </xml>`,
+      },
+    };
   },
   methods: {
     showCode() {
       this.code = BlocklyJS.workspaceToCode(this.$refs["foo"].workspace);
-    }
-  }
-}
+    },
+  },
+};
 </script>
-
-
 
 <style>
 /* #app-blockly {
@@ -89,10 +80,9 @@ export default {
   background-color: red;
 } */
 
-
 .code {
   position: relative;
-  width:100%;
+  width: 100%;
   height: 100px;
   margin: 0;
   background-color: beige;
@@ -109,8 +99,18 @@ export default {
 
 .blockly2 {
   position: relative;
-  top:0;
+  top: 0;
   width: 100%;
-  height:500px;
+  height: 530px;
+  z-index: 1;
 }
+
+/* .blocklySvg {
+  background-color: #fff;
+  outline: none;
+  overflow: hidden;
+  position: absolute;
+  display: block;
+  width: 100%;
+} */
 </style>

@@ -4,7 +4,13 @@
       <a
         href="#"
         class="menu-button d-none d-md-block"
-        @click.prevent.stop="changeSideMenuStatus({step :menuClickCount+1,classNames:menuType,selectedMenuHasSubItems})"
+        @click.prevent.stop="
+          changeSideMenuStatus({
+            step: menuClickCount + 1,
+            classNames: menuType,
+            selectedMenuHasSubItems,
+          })
+        "
       >
         <menu-icon />
       </a>
@@ -16,10 +22,10 @@
         <mobile-menu-icon />
       </a>
       <div
-        :class="{'search':true, 'mobile-view':isMobileSearch}"
+        :class="{ search: true, 'mobile-view': isMobileSearch }"
         ref="searchContainer"
-        @mouseenter="isSearchOver=true"
-        @mouseleave="isSearchOver=false"
+        @mouseenter="isSearchOver = true"
+        @mouseleave="isSearchOver = false"
       >
         <b-input
           :placeholder="$t('menu.search')"
@@ -39,22 +45,23 @@
           toggle-class="language-button"
         >
           <template slot="button-content">
-            <span class="name">{{$i18n.locale.toUpperCase()}}</span>
+            <span class="name">{{ $i18n.locale.toUpperCase() }}</span>
           </template>
           <b-dropdown-item
-            v-for="(l,index) in localeOptions"
+            v-for="(l, index) in localeOptions"
             :key="index"
             @click="changeLocale(l.id, l.direction)"
-          >{{l.name}}</b-dropdown-item>
+            >{{ l.name }}</b-dropdown-item
+          >
         </b-dropdown>
       </div>
-      <div class="position-relative d-none d-none d-lg-inline-block">
+      <!-- <div class="position-relative d-none d-none d-lg-inline-block">
         <a
           class="btn btn-outline-primary btn-sm ml-2"
           target="_top"
           :href="buyUrl"
         >{{$t('user.buy')}}</a>
-      </div>
+      </div> -->
     </div>
     <router-link class="navbar-logo" tag="a" :to="adminRoot">
       <span class="logo d-none d-xs-block"></span>
@@ -62,7 +69,7 @@
     </router-link>
 
     <div class="navbar-right">
-      <div class="d-none d-md-inline-block align-middle mr-3">
+      <!-- <div class="d-none d-md-inline-block align-middle mr-3">
         <switches
           id="tool-mode-switch"
           v-model="isDarkActive"
@@ -70,8 +77,12 @@
           class="vue-switcher-small"
           color="primary"
         />
-        <b-tooltip target="tool-mode-switch" placement="left" title="Dark Mode"></b-tooltip>
-      </div>
+        <b-tooltip
+          target="tool-mode-switch"
+          placement="left"
+          title="Dark Mode"
+        ></b-tooltip>
+      </div> -->
       <div class="header-icons d-inline-block align-middle">
         <div class="position-relative d-none d-sm-inline-block">
           <b-dropdown
@@ -82,57 +93,89 @@
             menu-class="position-absolute mt-3 iconMenuDropdown"
             no-caret
             v-b-scrollspy:nav-scroller
-            
           >
             <template slot="button-content">
               <i class="simple-icon-grid" />
             </template>
-            <vue-perfect-scrollbar :settings="{ suppressScrollX: true, wheelPropagation: false }">
-            <div  class="d-flex flex-column" style="overflow-y: scroll height: 100px">
-             <div  class="d-flex flex-row ">
-              <router-link tag="a" :to="`${adminRoot}/dashboards/default`" class="icon-menu-item">
-                <i class="iconsminds-shop-4 d-block" />
-                {{$t('menu.dashboards')}}
-              </router-link>
-              <router-link tag="a" :to="`${adminRoot}/setup/intents/all-intents`" class="icon-menu-item">
-                <i class="iconsminds-three-arrow-fork d-block" />
-                {{$t('menu.setup')}}
-              </router-link>
-              <router-link tag="a" :to="`${adminRoot}/data/data-prepare`" class="icon-menu-item">
-                <i class="iconsminds-data-center d-block" />
-                {{$t('menu.data')}}
-              </router-link>
-             </div>
-              <div  class="d-flex flex-row">
-              <router-link tag="a" :to="`${adminRoot}/images/img-prepare`" class="icon-menu-item">
-                <i class="iconsminds-photo d-block" />
-                {{$t('menu.images')}}
-              </router-link>
-              <router-link tag="a" :to="`${adminRoot}/training/training-definition`" class="icon-menu-item">
-                <i class="iconsminds-books d-block" />
-                {{$t('menu.training')}}
-              </router-link>
-              <router-link tag="a" :to="`${adminRoot}/validations/validation-definition`" class="icon-menu-item">
-                <i class="iconsminds-scale d-block" />
-                {{$t('menu.validations')}}
-              </router-link>
+            <vue-perfect-scrollbar
+              :settings="{ suppressScrollX: true, wheelPropagation: false }"
+            >
+              <div class="d-flex flex-column" style="overflow-y: scroll height: 100px">
+                <div class="d-flex flex-row">
+                  <router-link
+                    tag="a"
+                    :to="`${adminRoot}/dashboards/default`"
+                    class="icon-menu-item"
+                  >
+                    <i class="iconsminds-shop-4 d-block" />
+                    {{ $t("menu.dashboards") }}
+                  </router-link>
+                  <router-link
+                    tag="a"
+                    :to="`${adminRoot}/setup/intents/all-intents`"
+                    class="icon-menu-item"
+                  >
+                    <i class="iconsminds-three-arrow-fork d-block" />
+                    {{ $t("menu.setup") }}
+                  </router-link>
+                  <router-link
+                    tag="a"
+                    :to="`${adminRoot}/data/data-prepare`"
+                    class="icon-menu-item"
+                  >
+                    <i class="iconsminds-data-center d-block" />
+                    {{ $t("menu.data") }}
+                  </router-link>
+                </div>
+                <div class="d-flex flex-row">
+                  <router-link
+                    tag="a"
+                    :to="`${adminRoot}/images/img-prepare`"
+                    class="icon-menu-item"
+                  >
+                    <i class="iconsminds-photo d-block" />
+                    {{ $t("menu.images") }}
+                  </router-link>
+                  <router-link
+                    tag="a"
+                    :to="`${adminRoot}/training/training-definition`"
+                    class="icon-menu-item"
+                  >
+                    <i class="iconsminds-books d-block" />
+                    {{ $t("menu.training") }}
+                  </router-link>
+                  <router-link
+                    tag="a"
+                    :to="`${adminRoot}/validations/validation-definition`"
+                    class="icon-menu-item"
+                  >
+                    <i class="iconsminds-scale d-block" />
+                    {{ $t("menu.validations") }}
+                  </router-link>
+                </div>
+                <div class="d-flex flex-row">
+                  <router-link
+                    tag="a"
+                    :to="`${adminRoot}/prediction/prediction-batch`"
+                    class="icon-menu-item"
+                  >
+                    <i class="iconsminds-gift-box d-block" />
+                    {{ $t("menu.prediction") }}
+                  </router-link>
+                  <router-link tag="a" :to="`${adminRoot}/charts`" class="icon-menu-item">
+                    <i class="simple-icon-chart d-block" />
+                    {{ $t("menu.charts") }}
+                  </router-link>
+                  <router-link
+                    tag="a"
+                    :to="`${adminRoot}/reports`"
+                    class="icon-menu-item"
+                  >
+                    <i class="iconsminds-statistic d-block" />
+                    {{ $t("menu.reports") }}
+                  </router-link>
+                </div>
               </div>
-              <div  class="d-flex flex-row">
-              <router-link tag="a" :to="`${adminRoot}/prediction/prediction-batch`" class="icon-menu-item">
-                <i class="iconsminds-gift-box d-block" />
-                {{$t('menu.prediction')}}
-              </router-link>
-              <router-link tag="a" :to="`${adminRoot}/charts`" class="icon-menu-item">
-                <i class="simple-icon-chart d-block" />
-                {{$t('menu.charts')}}
-              </router-link>
-              <router-link tag="a" :to="`${adminRoot}/reports`" class="icon-menu-item">
-                <i class="iconsminds-statistic d-block" />
-                {{$t('menu.reports')}}
-              </router-link>
-              </div>
-             </div>
-             
             </vue-perfect-scrollbar>
           </b-dropdown>
         </div>
@@ -150,10 +193,12 @@
               <i class="simple-icon-bell" />
               <span class="count">3</span>
             </template>
-            <vue-perfect-scrollbar :settings="{ suppressScrollX: true, wheelPropagation: false }">
+            <vue-perfect-scrollbar
+              :settings="{ suppressScrollX: true, wheelPropagation: false }"
+            >
               <div
                 class="d-flex flex-row mb-3 pb-3 border-bottom"
-                v-for="(n,index) in notifications"
+                v-for="(n, index) in notifications"
                 :key="index"
               >
                 <router-link tag="a" :to="`${adminRoot}/pages/product/details`">
@@ -165,8 +210,8 @@
                 </router-link>
                 <div class="pl-3 pr-2">
                   <router-link tag="a" :to="`${adminRoot}/pages/product/details`">
-                    <p class="font-weight-medium mb-1">{{n.title}}</p>
-                    <p class="text-muted mb-0 text-small">{{n.date}}</p>
+                    <p class="font-weight-medium mb-1">{{ n.title }}</p>
+                    <p class="text-muted mb-0 text-small">{{ n.date }}</p>
                   </router-link>
                 </div>
               </div>
@@ -175,9 +220,17 @@
         </div>
         <div class="position-relative d-none d-sm-inline-block">
           <div class="btn-group">
-            <b-button variant="empty" class="header-icon btn-sm" @click="toggleFullScreen">
+            <b-button
+              variant="empty"
+              class="header-icon btn-sm"
+              @click="toggleFullScreen"
+            >
               <i
-                :class="{'d-inline-block':true,'simple-icon-size-actual':fullScreen,'simple-icon-size-fullscreen':!fullScreen }"
+                :class="{
+                  'd-inline-block': true,
+                  'simple-icon-size-actual': fullScreen,
+                  'simple-icon-size-fullscreen': !fullScreen,
+                }"
               />
             </b-button>
           </div>
@@ -193,7 +246,7 @@
           no-caret
         >
           <template slot="button-content">
-            <span class="name mr-1">{{currentUser.title}}</span>
+            <span class="name mr-1">{{ currentUser.title }}</span>
             <span>
               <img :alt="currentUser.title" :src="currentUser.img" />
             </span>
@@ -221,14 +274,14 @@ import {
   menuHiddenBreakpoint,
   localeOptions,
   buyUrl,
-  adminRoot
+  adminRoot,
 } from "../../constants/config";
 import { getDirection, setDirection, getThemeColor, setThemeColor } from "../../utils";
 export default {
   components: {
     "menu-icon": MenuIcon,
     "mobile-menu-icon": MobileMenuIcon,
-    switches: Switches
+    switches: Switches,
   },
   data() {
     return {
@@ -242,7 +295,7 @@ export default {
       localeOptions,
       buyUrl,
       notifications,
-      isDarkActive: false
+      isDarkActive: false,
     };
   },
   methods: {
@@ -315,21 +368,19 @@ export default {
     isInFullScreen() {
       return (
         (document.fullscreenElement && document.fullscreenElement !== null) ||
-        (document.webkitFullscreenElement &&
-          document.webkitFullscreenElement !== null) ||
-        (document.mozFullScreenElement &&
-          document.mozFullScreenElement !== null) ||
+        (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+        (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
         (document.msFullscreenElement && document.msFullscreenElement !== null)
       );
-    }
+    },
   },
   computed: {
     ...mapGetters({
       currentUser: "currentUser",
       menuType: "getMenuType",
       menuClickCount: "getMenuClickCount",
-      selectedMenuHasSubItems: "getSelectedMenuHasSubItems"
-    })
+      selectedMenuHasSubItems: "getSelectedMenuHasSubItems",
+    }),
   },
   beforeDestroy() {
     document.removeEventListener("click", this.handleDocumentforMobileSearch);
@@ -345,7 +396,7 @@ export default {
       }
     },
     isDarkActive(val) {
-      debugger
+      debugger;
       let color = getThemeColor();
       let isChange = false;
       if (val && color.indexOf("light") > -1) {
@@ -366,12 +417,9 @@ export default {
       if (val) {
         document.addEventListener("click", this.handleDocumentforMobileSearch);
       } else {
-        document.removeEventListener(
-          "click",
-          this.handleDocumentforMobileSearch
-        );
+        document.removeEventListener("click", this.handleDocumentforMobileSearch);
       }
-    }
-  }
+    },
+  },
 };
 </script>

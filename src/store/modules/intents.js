@@ -1,34 +1,43 @@
 
 const dataItems = [
     {
+        id: 1,
         state: "AAA",
         description: 'description 1',
-        name: { first: "Dickerson", last: "Macdonald" },
+        name: "Dickerson"
     },
     {
+        id: 2,
         state: "ZZZ",
         description: 'description 1',
-        name: { first: "Dickerson 2", last: "Macdonald" },
+        name: "Dickerson 2", 
     },
     {
+        id: 3,
         state: "BBB",
         description: 'description 1',
-        name: { first: "Dickerson 3", last: "Macdonald" },
+        name: "Dickerson 3",
     },
     {
+
+        id: 4,
         state: "DDD",
         description: 'description 1',
-        name: { first: "Dickerson 4", last: "Macdonald" },
+        name: "Dickerson 4", 
     },
     {
+        id: 5,
+
         state: "MMM",
         description: 'description 1',
-        name: { first: "Dickerson 5", last: "Macdonald" },
+        name: "Dickerson 5", 
     },
     {
+
+        id: 6,
         state: "KKK",
         description: 'description 6',
-        name: { first: "Dickerson 5", last: "Macdonald" },
+        name: "Dickerson 5", 
     },
 
 ]
@@ -37,14 +46,14 @@ const state = {
     isLoading: false,
     allIntents: null,
     intentItems: null,
-    todoError: ''
+    todoError: '',
 }
 
 const getters = {
     isLoading: state => state.isLoading,
     allIntents: state => state.allIntents,
     todoError: state => state.todoError,
-    intentItems: state => state.intentItems
+    intentItems: state => state.intentItems,
 }
 
 const mutations = {
@@ -66,14 +75,22 @@ const mutations = {
         state.intentItems = null
     },
     addNewIntent(state, newItem) {
-        state.allIntents.splice(0, 0, {...newItem })
+        
+        if (newItem.id) {
+           state.allIntents = state.allIntents.map((item) => {
+               return  item.id === newItem.id ? newItem : item
+            })
+        } else {
+            const newId = Math.max(...state.allIntents.map(item => item.id)) + 1
+            state.allIntents.splice(0, 0, { id: newId, ...newItem })
+        }
+        
         state.intentItems = state.allIntents
         state.isLoading = false
     },
 
     deleteIntent(state, newItem) {
-        debugger
-        state.allIntents = state.allIntents.filter((item) => item.name.first !== newItem.name.first)
+        state.allIntents = state.allIntents.filter((item) => item.id !== newItem.id)
         state.intentItems = state.allIntents
         state.isLoading = false
     }
@@ -88,14 +105,14 @@ const actions = {
         }, 1000)
     },
 
-    addNewIntent({commit}, payload) {
+    addNewIntent({ commit }, payload) {
         commit("getIntents")
         setTimeout(() => {
             commit('addNewIntent', payload)
         }, 1000)
     },
 
-    deleteIntent({commit}, payload) {
+    deleteIntent({ commit }, payload) {
         commit("setLoading")
         setTimeout(() => {
             commit('deleteIntent', payload)

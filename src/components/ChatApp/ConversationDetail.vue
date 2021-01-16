@@ -35,17 +35,14 @@
           :class="{
             'd-inline-block mb-3': true,
             'float-left': message.sender === otherUser.id,
-            'float-right': message.sender === currentUser.id
+            'float-right': message.sender === currentUser.id,
           }"
         >
           <div class="position-absolute pt-1 pr-2 r-0">
             <span class="text-extra-small text-muted">{{ message.time }}</span>
           </div>
           <b-card-body>
-            <div
-              class="d-flex flex-row pb-1"
-              v-if="message.sender === currentUser.id"
-            >
+            <div class="d-flex flex-row pb-1" v-if="message.sender === currentUser.id">
               <img
                 :alt="currentUser.title"
                 :src="currentUser.img"
@@ -98,15 +95,15 @@ export default {
     scrollToEnd() {
       setTimeout(() => {
         const container = this.$refs.chatArea.$el;
-        container.scrollTop = container.scrollHeight;
+        //container.scrollTop = container.scrollHeight;
       }, 0);
-    }
+    },
   },
   mounted() {
     this.scrollToEnd();
   },
   updated() {
     this.scrollToEnd();
-  }
+  },
 };
 </script>
