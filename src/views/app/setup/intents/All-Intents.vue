@@ -2,34 +2,25 @@
   <div>
     <b-row>
       <b-colxx xxs="12">
+        <h1>{{ title }}</h1>
         <piaf-breadcrumb :heading="$t('menu.all-intents')" />
-        <div class="separator mb-5"></div>
+        <div class="mb-2 mt-2">
+          <div class="d-block d-md-inline-block pt-1">
+            <div class="d-inline-block float-md-left mr-1 align-top">
+              <b-button
+                v-b-modal.modalright
+                @click="setEditMode()"
+                size="lg"
+                class="top-right-button"
+                >{{ $t("todo.add-new") }}</b-button
+              >
+            </div>
+          </div>
+          <div class="float-md-right pt-1"></div>
+        </div>
+        <div class="separator mb-2" />
       </b-colxx>
     </b-row>
-    <div class="d-flex flex-row mb-4">
-      <div class="d-inline-block">
-        <b-button
-          v-b-modal.modalright
-          @click="setEditMode()"
-          size="lg"
-          class="top-right-button"
-          >{{ $t("todo.add-new") }}</b-button
-        >
-        <!-- <b-dropdown
-          id="ddown1"
-          :text="`${$t('common.page-size')} ${perPage}`"
-          class="mr-1 float-md-left btn-group"
-          size="lg"
-        >
-          <b-dropdown-item
-            v-for="(option, index) in pageOptions"
-            :key="`page${index}`"
-            @click="changePageSize(option)"
-            >{{ option }}</b-dropdown-item
-          >
-        </b-dropdown> -->
-      </div>
-    </div>
 
     <add-new-modal
       :currentEditIntent="selectedIntent"
@@ -39,46 +30,42 @@
 
     <b-row>
       <b-colxx xxs="12">
-        <b-card class="mb-4" :title="$t('setup.intent-list')">
-          <!-- Main table element -->
-          <b-table
-            :items="intentItems"
-            :fields="fields"
-            :current-page="currentPage"
-            :per-page="perPage"
-            :filter="filter"
-            :filter-included-fields="filterOn"
-            :sort-by.sync="sortBy"
-            :sort-desc.sync="sortDesc"
-            :sort-direction="sortDirection"
-            @filtered="onFiltered"
-            :busy="isLoading"
-            small
-          >
-            <!-- <template #cell(name)="row">
+        <!-- Main table element -->
+        <b-table
+          class="table-divided order-with-arrow"
+          :items="intentItems"
+          :fields="fields"
+          :current-page="currentPage"
+          :per-page="perPage"
+          :filter="filter"
+          :filter-included-fields="filterOn"
+          :sort-by.sync="sortBy"
+          :sort-desc.sync="sortDesc"
+          :sort-direction="sortDirection"
+          @filtered="onFiltered"
+          :busy="isLoading"
+          small
+        >
+          <!-- <template #cell(name)="row">
               {{ row.value.first }} {{ row.value.last }}
             </template> -->
 
-            <template #cell(actions)="row">
-              <b-button
-                size="sm"
-                v-b-modal.modalright
-                @click="setEditMode(row.item)"
-                class="mr-1"
-                variant="outline-primary"
-              >
-                <i class="simple-icon-pencil" />
-              </b-button>
-              <b-button
-                variant="outline-primary"
-                size="sm"
-                @click="deleteIntent(row.item)"
-              >
-                <i class="simple-icon-trash" />
-              </b-button>
-            </template>
+          <template #cell(actions)="row">
+            <b-button
+              size="sm"
+              v-b-modal.modalright
+              @click="setEditMode(row.item)"
+              class="mr-1"
+              variant="outline-primary"
+            >
+              <i class="simple-icon-pencil" />
+            </b-button>
+            <b-button variant="outline-primary" size="sm" @click="deleteIntent(row.item)">
+              <i class="simple-icon-trash" />
+            </b-button>
+          </template>
 
-            <!-- <template #row-details="row">
+          <!-- <template #row-details="row">
               <b-card>
                 <ul>
                   <li v-for="(value, key) in row.item" :key="key">
@@ -88,53 +75,52 @@
               </b-card>
             </template> -->
 
-            <template #table-busy>
-              <div class="text-center my-2">
-                <b-spinner class="align-middle"></b-spinner>
-                <strong>Loading...</strong>
-              </div>
-            </template>
-          </b-table>
+          <template #table-busy>
+            <div class="text-center my-2">
+              <b-spinner class="align-middle"></b-spinner>
+              <strong>Loading...</strong>
+            </div>
+          </template>
+        </b-table>
 
-          <!-- Info modal -->
-          <b-modal
-            :id="infoModal.id"
-            :title="infoModal.title"
-            ok-only
-            @hide="resetInfoModal"
-          >
-            <pre>{{ infoModal.content }}</pre>
-          </b-modal>
+        <!-- Info modal -->
+        <b-modal
+          :id="infoModal.id"
+          :title="infoModal.title"
+          ok-only
+          @hide="resetInfoModal"
+        >
+          <pre>{{ infoModal.content }}</pre>
+        </b-modal>
 
-          <b-pagination
-            size="sm"
-            align="center"
-            :total-rows="totalRows"
-            :per-page="perPage"
-            v-model="currentPage"
-          >
-            <template v-slot:next-text>
-              <i class="simple-icon-arrow-right" />
-            </template>
-            <template v-slot:prev-text>
-              <i class="simple-icon-arrow-left" />
-            </template>
-            <template v-slot:first-text>
-              <i class="simple-icon-control-start" />
-            </template>
-            <template v-slot:last-text>
-              <i class="simple-icon-control-end" />
-            </template>
-          </b-pagination>
+        <b-pagination
+          size="sm"
+          align="center"
+          :total-rows="totalRows"
+          :per-page="perPage"
+          v-model="currentPage"
+        >
+          <template v-slot:next-text>
+            <i class="simple-icon-arrow-right" />
+          </template>
+          <template v-slot:prev-text>
+            <i class="simple-icon-arrow-left" />
+          </template>
+          <template v-slot:first-text>
+            <i class="simple-icon-control-start" />
+          </template>
+          <template v-slot:last-text>
+            <i class="simple-icon-control-end" />
+          </template>
+        </b-pagination>
 
-          <!-- <b-alert
+        <!-- <b-alert
             v-if="bootstrapTable.selected.length > 0"
             show
             variant="primary"
             >Selected Items :<br />
             <pre>{{ bootstrapTable.selected }}</pre>
           </b-alert> -->
-        </b-card>
       </b-colxx>
     </b-row>
   </div>

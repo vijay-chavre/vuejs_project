@@ -1,7 +1,7 @@
 <template>
   <div class="h-100">
     <router-view />
-    <color-switcher />
+    <!-- <color-switcher /> -->
   </div>
 </template>
 
@@ -24,6 +24,7 @@ export default {
       document.body.classList.add("ltr");
       document.dir = "ltr";
       document.body.classList.remove("rtl");
+      document.body.classList.add("rounded");
     }
   },
 };

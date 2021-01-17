@@ -15,13 +15,16 @@ import "./assets/css/sass/themes/piaf.light.blueolympic.scss";
 import "./main";
 */
 
-/* if you want single color remove this section:multicolor */
-var color = getThemeColor();
-let render = () => {
-  import("./assets/css/sass/themes/piaf." + color + ".scss").then(() =>
-    require("./main")
-  );
-};
+import "./assets/css/sass/themes/piaf.light.blueolympic.scss";
+import "./main";
 
-render();
+/* if you want single color remove this section:multicolor */
+// var color = getThemeColor();
+// let render = () => {
+//   import("./assets/css/sass/themes/piaf." + color + ".scss").then(() =>
+//     require("./main")
+//   );
+// };
+
+// render();
 /* if you want single color remove this section:multicolor */
