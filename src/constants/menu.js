@@ -75,10 +75,10 @@ const data = [
     ]
   },
   {
-    id: "scratch-pad",
+    id: "models",
     icon: "iconsminds-shop-4",
     label: "menu.scratch",
-    to: `${adminRoot}/scratch-pad`,
+    to: `${adminRoot}/models`,
   },
   {
     id: "training",

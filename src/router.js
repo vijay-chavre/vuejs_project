@@ -4,16 +4,35 @@ import AuthGuard from "./utils/auth.guard";
 import { adminRoot } from "./constants/config";
 import { UserRole } from "./utils/auth.roles";
 
+import Loder from './components/Loder/loder';
+
 Vue.use(VueRouter);
+
+const lazyLoadRoute = AsyncView => {
+  const AsyncHandler = () => ({
+    component: AsyncView,
+    loading: Loder
+  });
+
+  return Promise.resolve({
+    functional: true,
+    render(h, { data, children }) {
+      // Transparently pass any props or children
+      // to the view component.
+      return h(AsyncHandler, data, children);
+    }
+  });
+};
+
 
 const routes = [
   {
     path: "/",
-    component: () => import(/* webpackChunkName: "home" */ "./views/home"),
+    component: () => lazyLoadRoute(import(/* webpackChunkName: "home" */ "./views/home"))
   },
   {
     path: adminRoot,
-    component: () => import(/* webpackChunkName: "app" */ "./views/app"),
+    component: () => lazyLoadRoute(import(/* webpackChunkName: "app" */ "./views/app")),
     redirect: `${adminRoot}/dashboards`,
     meta: { loginRequired: true },
     /*
@@ -23,148 +42,129 @@ const routes = [
     children: [
       {
         path: "dashboards",
-        component: () =>
-          import(/* webpackChunkName: "dashboards" */ "./views/app/dashboards"),
+        component: () => lazyLoadRoute(import(/* webpackChunkName: "dashboards" */ "./views/app/dashboards")),
         redirect: `${adminRoot}/dashboards/default`,
         // meta: { roles: [UserRole.Admin, UserRole.Editor] },
         children: [
           {
             path: "default",
-            component: () =>
-              import(/* webpackChunkName: "dashboards" */ "./views/app/dashboards/Default"),
-            // meta: { roles: [UserRole.Admin] },
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "dashboards" */ "./views/app/dashboards/Default")),
           }
         ]
       },
       {
         path: "setup",
-        component: () =>
-          import(/* webpackChunkName: "setup" */ "./views/app/setup"),
+        component: () => lazyLoadRoute(import(/* webpackChunkName: "setup" */ "./views/app/setup")),
         redirect: `${adminRoot}/setup/intents`,
         children: [
           {
             path: "intents",
-            component: () =>
-              import(/* webpackChunkName : "intents" */ "./views/app/setup/intents"),
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/intents")),
+            
             redirect: `${adminRoot}/setup/intents/all-intents`,
             children: [
               {
                 path: "all-intents",
-                component: () =>
-                  import(/* webpackChunkName: "all-intents" */ "./views/app/setup/intents/All-Intents")
+                component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/intents/All-Intents")),
               },
-              {
-                path: "add-intent",
-                component: () =>
-                  import(/* webpackChunkName: "add-intent" */ "./views/app/setup/intents/Add-Intent")
-              }
+              // {
+              //   path: "add-intent",
+              //   component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/All-Intents")),
+              //   component: () =>
+              //     import(/*webpackPrefetch: false  webpackChunkName: "add-intent" */ "./views/app/setup/intents/Add-Intent")
+              // }
             ]
           }
         ]
       },
       {
         path: "data",
-        component: () =>
-          import(/* webpackChunkName: "data" */ "./views/app/data"),
+        component: () => lazyLoadRoute(import(/* webpackChunkName: "data" */ "./views/app/data")),
         redirect: `${adminRoot}/data/data-prepare`,
         children: [
           {
             path: "data-prepare",
-            component: () =>
-              import(/* webpackChunkName: "data-prepare" */ "./views/app/data/Prepare")
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "data-prepare" */ "./views/app/data/Prepare")),
           },
           {
             path: "data-analyse",
-            component: () =>
-              import(/* webpackChunkName: "data-analyse" */ "./views/app/data/Analyse")
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "data-prepare" */ "./views/app/data/Analyse")),
           }
         ]
       },
       {
-        path: `scratch-pad`,
-        component: () => import(/* webpackChunkName: "scratchpad" */ "./views/app/ScratchPad"),
+        path: `models`,
+        component: () => lazyLoadRoute(import(/* webpackChunkName: "model" */ "./views/app/ScratchPad")),
       },
       {
         path: "images",
-        component: () =>
-          import(/* webpackChunkName: "images" */ "./views/app/images"),
+        component: () => lazyLoadRoute(import(/* webpackChunkName: "images" */ "./views/app/images")),
         redirect: `${adminRoot}/images/img-prepare`,
         children: [
           {
             path: "img-prepare",
-            component: () =>
-              import(/* webpackChunkName: "img-prepare" */ "./views/app/images/Prepare")
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "img-prep" */ "./views/app/images/Prepare")),
           },
           {
             path: "img-analyse",
-            component: () =>
-              import(/* webpackChunkName: "img-analyse" */ "./views/app/images/Analyse")
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "img-prep" */ "./views/app/images/Analyse")),
           }
         ]
       },
       {
         path: "training",
-        component: () =>
-          import(/* webpackChunkName: "images" */ "./views/app/images"),
+        component: () => lazyLoadRoute(import(/* webpackChunkName: "training" */ "./views/app/training")),
         redirect: `${adminRoot}/training/training-definition`,
         children: [
           {
             path: "training-definition",
-            component: () =>
-              import(/* webpackChunkName: "training-definition" */ "./views/app/training/Definations")
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "training-def" */ "./views/app/training/Definations")),
           },
           {
             path: "training-process",
-            component: () =>
-              import(/* webpackChunkName: "training-process" */ "./views/app/training/Process")
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "training-def" */ "./views/app/training/Process")),
           },
           {
             path: "training-generate",
-            component: () =>
-              import(/* webpackChunkName: "training-generate" */ "./views/app/training/Generate")
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "training-def" */ "./views/app/training/Generate")),
           }
         ]
       },
 
       {
         path: "validations",
-        component: () =>
-          import(/* webpackChunkName: "images" */ "./views/app/images"),
+        component: () => lazyLoadRoute(import(/* webpackChunkName: "validation" */ "./views/app/validations")),
         redirect: `${adminRoot}/validations/validation-definition`,
         children: [
           {
             path: "validation-definition",
-            component: () =>
-              import(/* webpackChunkName: "defiations" */ "./views/app/validations/Definations")
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "validation-def" */ "./views/app/validations/Definations")),
           }
         ]
       },
       {
         path: "prediction",
-        component: () =>
-          import(/* webpackChunkName: "images" */ "./views/app/prediction"),
+        component: () => lazyLoadRoute(import(/* webpackChunkName: "prediction" */ "./views/app/prediction")),
         redirect: `${adminRoot}/prediction/prediction-batch`,
         children: [
           {
             path: "prediction-batch",
-            component: () =>
-              import(/* webpackChunkName: "prediction-batch" */ "./views/app/prediction/Batch")
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "prediction-batch" */ "./views/app/prediction/Batch")),
           },
           {
             path: "prediction-one",
-            component: () =>
-              import(/* webpackChunkName: "prediction-one" */ "./views/app/prediction/One")
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "prediction-batch" */ "./views/app/prediction/One")),
           }
         ]
       },
 
       {
         path: `${adminRoot}/charts`,
-        component: () => import(/* webpackChunkName: "charts" */ "./views/app/charts"),
+        component: () => lazyLoadRoute(import(/* webpackChunkName: "charts" */ "./views/app/charts")),
       },
       {
         path: `${adminRoot}/reports`,
-        component: () => import(/* webpackChunkName: "reports" */ "./views/app/reports"),
+        component: () => lazyLoadRoute(import(/* webpackChunkName: "reports" */ "./views/app/reports")),
       },
 
       {
@@ -222,4 +222,5 @@ const router = new VueRouter({
   mode: "hash"
 });
 router.beforeEach(AuthGuard);
+
 export default router;

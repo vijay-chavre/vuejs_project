@@ -2,7 +2,7 @@
   <div>
     <b-row>
       <b-colxx xxs="12">
-        <h1>{{ title }}</h1>
+        <!-- <h1>{{ title }}</h1> -->
         <piaf-breadcrumb :heading="$t('menu.all-intents')" />
         <div class="mb-2 mt-2">
           <div class="d-block d-md-inline-block pt-1">
