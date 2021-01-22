@@ -97,28 +97,50 @@ const data = [
     label: "menu.scratch",
     to: `${adminRoot}/models`,
   },
+
   {
-    id: "training",
+    id: "run",
     icon: "iconsminds-books",
-    label: "menu.training",
-    to: `${adminRoot}/training`,
+    label: "menu.runs",
+    to: `${adminRoot}/run`,
     subs: [{
       icon: "iconsminds-gaugage",
-      label: "menu.training-definition",
-      to: `${adminRoot}/training/training-definition`
+      label: "menu.runs-new",
+      to: `${adminRoot}/runs/runs-new`
     },
     {
       icon: "iconsminds-monitor-analytics",
-      label: "menu.training-process",
-      to: `${adminRoot}/training/training-process`
-    },
-    {
-      icon: "iconsminds-green-energy",
-      label: "menu.training-generate",
-      to: `${adminRoot}/training/training-generate`
+      label: "menu.runs-history",
+      to: `${adminRoot}/runs/runs-history`
     }
     ]
   },
+
+
+  // {
+  //   id: "training",
+  //   icon: "iconsminds-books",
+  //   label: "menu.training",
+  //   to: `${adminRoot}/training`,
+  //   subs: [{
+  //     icon: "iconsminds-gaugage",
+  //     label: "menu.training-definition",
+  //     to: `${adminRoot}/training/training-definition`
+  //   },
+  //   {
+  //     icon: "iconsminds-monitor-analytics",
+  //     label: "menu.training-process",
+  //     to: `${adminRoot}/training/training-process`
+  //   },
+  //   {
+  //     icon: "iconsminds-green-energy",
+  //     label: "menu.training-generate",
+  //     to: `${adminRoot}/training/training-generate`
+  //   }
+  //   ]
+  // },
+
+
   // {
   //   id: "validations",
   //   icon: "iconsminds-scale",

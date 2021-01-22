@@ -121,57 +121,75 @@ const routes = [
           }
         ]
       },
+
       {
-        path: "training",
-        component: () => lazyLoadRoute(import(/* webpackChunkName: "training" */ "./views/app/training")),
-        redirect: `${adminRoot}/training/training-definition`,
+        path: "runs",
+        component: () => lazyLoadRoute(import(/* webpackChunkName: "runs" */ "./views/app/runs")),
+        redirect: `${adminRoot}/runs/runs-new`,
         children: [
           {
-            path: "training-definition",
-            component: () => lazyLoadRoute(import(/* webpackChunkName: "training-def" */ "./views/app/training/Definations")),
+            path: "runs-new",
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "runs-sub" */ "./views/app/runs/New")),
           },
           {
-            path: "training-process",
-            component: () => lazyLoadRoute(import(/* webpackChunkName: "training-def" */ "./views/app/training/Process")),
-          },
-          {
-            path: "training-generate",
-            component: () => lazyLoadRoute(import(/* webpackChunkName: "training-def" */ "./views/app/training/Generate")),
+            path: "runs-history",
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "runs-sub" */ "./views/app/runs/History")),
           }
         ]
       },
 
-      {
-        path: "validations",
-        component: () => lazyLoadRoute(import(/* webpackChunkName: "validation" */ "./views/app/validations")),
-        redirect: `${adminRoot}/validations/validation-definition`,
-        children: [
-          {
-            path: "validation-definition",
-            component: () => lazyLoadRoute(import(/* webpackChunkName: "validation-def" */ "./views/app/validations/Definations")),
-          }
-        ]
-      },
-      {
-        path: "prediction",
-        component: () => lazyLoadRoute(import(/* webpackChunkName: "prediction" */ "./views/app/prediction")),
-        redirect: `${adminRoot}/prediction/prediction-batch`,
-        children: [
-          {
-            path: "prediction-batch",
-            component: () => lazyLoadRoute(import(/* webpackChunkName: "prediction-batch" */ "./views/app/prediction/Batch")),
-          },
-          {
-            path: "prediction-one",
-            component: () => lazyLoadRoute(import(/* webpackChunkName: "prediction-batch" */ "./views/app/prediction/One")),
-          }
-        ]
-      },
 
-      {
-        path: `${adminRoot}/charts`,
-        component: () => lazyLoadRoute(import(/* webpackChunkName: "charts" */ "./views/app/charts")),
-      },
+      // {
+      //   path: "training",
+      //   component: () => lazyLoadRoute(import(/* webpackChunkName: "training" */ "./views/app/training")),
+      //   redirect: `${adminRoot}/training/training-definition`,
+      //   children: [
+      //     {
+      //       path: "training-definition",
+      //       component: () => lazyLoadRoute(import(/* webpackChunkName: "training-def" */ "./views/app/training/Definations")),
+      //     },
+      //     {
+      //       path: "training-process",
+      //       component: () => lazyLoadRoute(import(/* webpackChunkName: "training-def" */ "./views/app/training/Process")),
+      //     },
+      //     {
+      //       path: "training-generate",
+      //       component: () => lazyLoadRoute(import(/* webpackChunkName: "training-def" */ "./views/app/training/Generate")),
+      //     }
+      //   ]
+      // },
+
+      // {
+      //   path: "validations",
+      //   component: () => lazyLoadRoute(import(/* webpackChunkName: "validation" */ "./views/app/validations")),
+      //   redirect: `${adminRoot}/validations/validation-definition`,
+      //   children: [
+      //     {
+      //       path: "validation-definition",
+      //       component: () => lazyLoadRoute(import(/* webpackChunkName: "validation-def" */ "./views/app/validations/Definations")),
+      //     }
+      //   ]
+      // },
+      // {
+      //   path: "prediction",
+      //   component: () => lazyLoadRoute(import(/* webpackChunkName: "prediction" */ "./views/app/prediction")),
+      //   redirect: `${adminRoot}/prediction/prediction-batch`,
+      //   children: [
+      //     {
+      //       path: "prediction-batch",
+      //       component: () => lazyLoadRoute(import(/* webpackChunkName: "prediction-batch" */ "./views/app/prediction/Batch")),
+      //     },
+      //     {
+      //       path: "prediction-one",
+      //       component: () => lazyLoadRoute(import(/* webpackChunkName: "prediction-batch" */ "./views/app/prediction/One")),
+      //     }
+      //   ]
+      // },
+
+      // {
+      //   path: `${adminRoot}/charts`,
+      //   component: () => lazyLoadRoute(import(/* webpackChunkName: "charts" */ "./views/app/charts")),
+      // },
       {
         path: `${adminRoot}/reports`,
         component: () => lazyLoadRoute(import(/* webpackChunkName: "reports" */ "./views/app/reports")),

@@ -49,6 +49,8 @@
     "img-analyse": "Analyse",
 
     "runs": "Runs",
+    "runs-new": "New",
+    "runs-history": "History",
     "runs-samary": "Summary",
     "runs-usage-history": "Usage History",
 
@@ -164,7 +166,7 @@
   },
   "setup": {
     "intent-list": "All Intents",
-    "add-new-intent": "Add New Intent",
+    "add-new-intent": "New Intent",
     "edit-new-intent": "Edit Intent",
     "edit-intent" : "Edit Intent",
     "intent-name" : "Name",
@@ -179,7 +181,7 @@
     "sales": "Sales",
     "orders": "Orders",
     "refunds": "Refunds",
-    "recent-orders": "Recent Orders",
+    "recent-orders": "Recent Predictions",
     "product-categories": "Product Categories",
     "cakes": "Cakes",
     "tickets": "Tickets",

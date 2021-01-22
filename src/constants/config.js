@@ -17,6 +17,14 @@ export const localeOptions = [
   { id: 'enrtl', name: 'English RTL', direction: 'rtl' }
 ]
 
+
+export const intentOptions = [
+  { id: 'int1', name: 'Intent 1', direction: 'ltr' },
+  { id: 'int2', name: 'Intent 2', direction: 'ltr' },
+  { id: 'int3', name: 'Intent 3', direction: 'rtl' }
+]
+
+
 export const firebaseConfig = {
   apiKey: "AIzaSyDe94G7L-3soXVSpVbsYlB5DfYH2L91aTU",
   authDomain: "piaf-vue-login.firebaseapp.com",

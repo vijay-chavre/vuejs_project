@@ -1,9 +1,25 @@
 <template>
-  <b-row>
-    <b-colxx xxs="12">
-      <BlocklyComponent class="blockly2" :options="options" ref="foo"></BlocklyComponent>
-    </b-colxx>
-  </b-row>
+  <div>
+    <div class="mb-2">
+      <b-nav pills>
+        <b-nav-item active>Active</b-nav-item>
+        <b-nav-item>Link</b-nav-item>
+        <b-nav-item>Another Link</b-nav-item>
+        <b-nav-item>Disabled</b-nav-item>
+      </b-nav>
+    </div>
+    <div class="separator mb-5"></div>
+
+    <b-row>
+      <b-colxx xxs="12">
+        <BlocklyComponent
+          class="blockly2"
+          :options="options"
+          ref="foo"
+        ></BlocklyComponent>
+      </b-colxx>
+    </b-row>
+  </div>
 </template>
 
 <script>
@@ -113,4 +129,8 @@ export default {
   display: block;
   width: 100%;
 } */
+
+.model-nave {
+  border-radius: 10px;
+}
 </style>

@@ -45,14 +45,11 @@
           toggle-class="language-button"
         >
           <template slot="button-content">
-            <span class="name">{{ $i18n.locale.toUpperCase() }}</span>
+            <span class="name">{{ "INTENTS" }}</span>
           </template>
-          <b-dropdown-item
-            v-for="(l, index) in localeOptions"
-            :key="index"
-            @click="changeLocale(l.id, l.direction)"
-            >{{ l.name }}</b-dropdown-item
-          >
+          <b-dropdown-item v-for="(l, index) in intentOptions" :key="index">{{
+            l.name
+          }}</b-dropdown-item>
         </b-dropdown>
       </div>
       <!-- <div class="position-relative d-none d-none d-lg-inline-block">
@@ -252,8 +249,8 @@
             </span>
           </template>
           <b-dropdown-item>Account</b-dropdown-item>
-          <b-dropdown-item>Features</b-dropdown-item>
-          <b-dropdown-item>History</b-dropdown-item>
+          <!-- <b-dropdown-item>Features</b-dropdown-item>
+          <b-dropdown-item>History</b-dropdown-item> -->
           <b-dropdown-item>Support</b-dropdown-item>
           <b-dropdown-divider />
           <b-dropdown-item @click="logout">Sign out</b-dropdown-item>
@@ -273,6 +270,7 @@ import {
   searchPath,
   menuHiddenBreakpoint,
   localeOptions,
+  intentOptions,
   buyUrl,
   adminRoot,
 } from "../../constants/config";
@@ -293,6 +291,7 @@ export default {
       searchPath,
       adminRoot,
       localeOptions,
+      intentOptions,
       buyUrl,
       notifications,
       isDarkActive: false,
