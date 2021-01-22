@@ -94,13 +94,10 @@
 
                 <div class="col-12 col-xl-4 col-lg-5 col-md-6">
                   <div class="home-text">
-                    <div class="display-1">
-                      Welcome To
-                      <br />Nepune
-                    </div>
-                    <p class="white mb-5">Nepune.AI</p>
+                    <div class="display-1">Nepune.AI</div>
+                    <p class="white mb-5">AI at your finger-tips</p>
                     <router-link class="btn btn-light btn-xl mr-2 mb-2" :to="adminRoot">
-                      VIEW NOW
+                      GET IT NOW
                       <i class="simple-icon-arrow-right"></i>
                     </router-link>
                   </div>

@@ -59,21 +59,31 @@ const routes = [
         children: [
           {
             path: "intents",
-            component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/intents")),
+           // component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/intents")),
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/intents/All-Intents")),
+
             
-            redirect: `${adminRoot}/setup/intents/all-intents`,
-            children: [
-              {
-                path: "all-intents",
-                component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/intents/All-Intents")),
-              },
-              // {
-              //   path: "add-intent",
-              //   component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/All-Intents")),
-              //   component: () =>
-              //     import(/*webpackPrefetch: false  webpackChunkName: "add-intent" */ "./views/app/setup/intents/Add-Intent")
-              // }
-            ]
+            // redirect: `${adminRoot}/setup/intents/all-intents`,
+            // children: [
+            //   {
+            //     path: "all-intents",
+            //     component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/intents/All-Intents")),
+            //   },
+            //   // {
+            //   //   path: "add-intent",
+            //   //   component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/All-Intents")),
+            //   //   component: () =>
+            //   //     import(/*webpackPrefetch: false  webpackChunkName: "add-intent" */ "./views/app/setup/intents/Add-Intent")
+            //   // }
+            // ]
+          },
+          {
+            path: 'setup-data-source',
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/intents/DataSource")),
+          },
+          {
+            path: 'setup-image-source',
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/intents/ImageSource")),
           }
         ]
       },

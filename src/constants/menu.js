@@ -23,22 +23,39 @@ const data = [
     to: `${adminRoot}/setup`,
     subs: [
       {
-        icon: "simple-icon-logout",
+        icon: "simple-icon-people",
         label: "menu.intents",
         to: `${adminRoot}/setup/intents`,
-        subs: [{
-          icon: "simple-icon-arrow-right",
-          label: "menu.all-intents",
-          to: `${adminRoot}/setup/intents/all-intents`
-        },
-        // {
-        //   icon: "simple-icon-arrow-right",
-        //   label: "menu.add-intent",
-        //   to: `${adminRoot}/setup/intents/add-intent`
-        // }
-        ]
-      }
+      },
+      {
+        icon: "iconsminds-big-data",
+        label: "menu.setup-data-source",
+        to: `${adminRoot}/setup/setup-data-source`,
+      },
+      {
+        icon: "iconsminds-photo",
+        label: "menu.setup-image-source",
+        to: `${adminRoot}/setup/setup-image-source`,
+      },
     ]
+    // subs: [
+    //   {
+    //     icon: "simple-icon-logout",
+    //     label: "menu.intents",
+    //     to: `${adminRoot}/setup/intents`,
+    //     subs: [{
+    //       icon: "simple-icon-arrow-right",
+    //       label: "menu.all-intents",
+    //       to: `${adminRoot}/setup/intents/all-intents`
+    //     },
+    //     // {
+    //     //   icon: "simple-icon-arrow-right",
+    //     //   label: "menu.add-intent",
+    //     //   to: `${adminRoot}/setup/intents/add-intent`
+    //     // }
+    //     ]
+    //   }
+    // ]
   },
   {
     id: "data",
@@ -102,44 +119,44 @@ const data = [
     }
     ]
   },
-  {
-    id: "validations",
-    icon: "iconsminds-scale",
-    label: "menu.validation-validations",
-    to: `${adminRoot}/validations`,
-    //roles: [UserRole.Admin, UserRole.Editor],
-    subs: [{
-      icon: "simple-icon-briefcase",
-      label: "menu.validation-definition",
-      to: `${adminRoot}/validations/validation-definition`,
-      // roles: [UserRole.Admin],
-    }
-    ]
-  },
-  {
-    id: "prediction",
-    icon: "iconsminds-gift-box",
-    label: "menu.prediction",
-    to: `${adminRoot}/prediction`,
-    subs: [{
-      icon: "iconsminds-box-with-folders",
-      label: "menu.prediction-batch",
-      to: `${adminRoot}/prediction/prediction-batch`
-    },
-    {
-      icon: "iconsminds-monitor-analytics",
-      label: "menu.prediction-one",
-      to: `${adminRoot}/prediction/prediction-one`
-    }
-    ]
-  },
+  // {
+  //   id: "validations",
+  //   icon: "iconsminds-scale",
+  //   label: "menu.validation-validations",
+  //   to: `${adminRoot}/validations`,
+  //   //roles: [UserRole.Admin, UserRole.Editor],
+  //   subs: [{
+  //     icon: "simple-icon-briefcase",
+  //     label: "menu.validation-definition",
+  //     to: `${adminRoot}/validations/validation-definition`,
+  //     // roles: [UserRole.Admin],
+  //   }
+  //   ]
+  // },
+  // {
+  //   id: "prediction",
+  //   icon: "iconsminds-gift-box",
+  //   label: "menu.prediction",
+  //   to: `${adminRoot}/prediction`,
+  //   subs: [{
+  //     icon: "iconsminds-box-with-folders",
+  //     label: "menu.prediction-batch",
+  //     to: `${adminRoot}/prediction/prediction-batch`
+  //   },
+  //   {
+  //     icon: "iconsminds-monitor-analytics",
+  //     label: "menu.prediction-one",
+  //     to: `${adminRoot}/prediction/prediction-one`
+  //   }
+  //   ]
+  // },
 
-  {
-    id: "charts",
-    icon: "simple-icon-chart",
-    label: "menu.charts",
-    to: `${adminRoot}/charts`,
-  },
+  // {
+  //   id: "charts",
+  //   icon: "simple-icon-chart",
+  //   label: "menu.charts",
+  //   to: `${adminRoot}/charts`,
+  // },
   {
     id: "reports",
     icon: "iconsminds-statistic",

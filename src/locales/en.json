@@ -34,6 +34,9 @@
     "intents": "Intents",
     "all-intents": "All Intents",
     "add-intent": "Add New Intent",
+    "setup-data-source": "Data Source",
+    "setup-image-source": "Image Source",
+
 
     "data": "Data",
     "data-prepare": "Prepare",
