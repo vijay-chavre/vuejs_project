@@ -78,6 +78,10 @@ const routes = [
             // ]
           },
           {
+            path: "add-intent",
+            component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/intents/Add-Intent")),
+          },
+          {
             path: 'setup-data-source',
             component: () => lazyLoadRoute(import(/* webpackChunkName: "intents" */ "./views/app/setup/intents/DataSource")),
           },

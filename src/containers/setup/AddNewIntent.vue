@@ -1,9 +1,8 @@
 <template>
   <b-modal
-    id="modalright"
-    ref="modalright"
+    id="modallg"
+    ref="modallg"
     :title="$t(isEditMode ? 'setup.edit-new-intent' : 'setup.add-new-intent')"
-    modal-class="modal-right"
     @hidden="resetModal"
   >
     <b-form>
@@ -18,7 +17,7 @@
       </b-form-group>
     </b-form>
     <template slot="modal-footer">
-      <b-button variant="outline-secondary" @click="hideModal('modalright')">{{
+      <b-button variant="outline-secondary" @click="hideModal('modallg')">{{
         $t("todo.cancel")
       }}</b-button>
       <b-button variant="primary" @click="addItem" class="mr-1">{{
@@ -91,7 +90,7 @@ const TodoAddNewModal = {
         this.addNewIntent(this.newItem);
       }
 
-      this.hideModal("modalright");
+      this.hideModal("modallg");
     },
   },
 };

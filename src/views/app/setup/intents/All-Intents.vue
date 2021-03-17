@@ -8,8 +8,8 @@
           <div class="d-block d-md-inline-block pt-1">
             <div class="d-inline-block float-md-left mr-1 align-top">
               <b-button
-                v-b-modal.modalright
-                @click="setEditMode()"
+                v-b-modal.modallg
+                to="/app/setup/add-intent"
                 size="lg"
                 class="top-right-button"
                 >{{ $t("todo.add-new") }}</b-button
@@ -53,7 +53,7 @@
           <template #cell(actions)="row">
             <b-button
               size="sm"
-              v-b-modal.modalright
+              v-b-modal.modallg
               @click="setEditMode(row.item)"
               class="mr-1"
               variant="outline-primary"
